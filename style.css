@@ -1,0 +1,2668 @@
+/* Styling for the initial design layout + 6 Buttons for desktop and mobile */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Good-Timing';
+    src: url('fonts/Good-Timing.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    background: rgb(0, 0, 0);
+    font-family: 'Good-Timing', Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    touch-action: manipulation;
+}
+
+/* Fixed layer that holds all the background images */
+.background-images-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Each individual backgroumd image with styling and fade transition effect */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.75s ease;
+}
+
+.background-image.show {
+    opacity: 0.35;
+}
+
+/* All the Images that will be displayed as the background image on the page */
+.bg-default {
+    background-image: url('images/DefaultImg.jpg');
+}
+
+.bg-respiratory {
+    background-image: url('images/RespiratoryImg.jpg');
+}
+
+.bg-muscular {
+    background-image: url('images/MuscularImg.jpg');
+}
+
+.bg-digestive {
+    background-image: url('images/DigestiveImg.jpg');
+}
+
+.bg-circulatory {
+    background-image: url('images/CirculatoryImg.jpg');
+}
+
+.bg-nervous {
+    background-image: url('images/NervousImg.jpg');
+}
+
+/* Main header with gradient background and transition effect */
+.gradient-header {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(to right, rgb(0, 125, 255), rgb(255, 20, 145));
+    position: relative;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.6s ease-in-out;
+    z-index: 3;
+}
+
+.gradient-header.minimized {
+    transform: translateY(-70%);
+}
+
+/* Header container for all header text elements */
+.header-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s ease-in-out;
+}
+
+/* Main page title with text shadow */
+.main-title {
+    font-size: 40px;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.6s ease-in-out;
+}
+
+/* Welcome message that displays below the main title */
+.welcome-text {
+    font-size: 19px;
+    opacity: 0.9;
+    transition: all 0.6s ease-in-out;
+}
+
+/* Return message that appears when the header is minimized */
+.return-message {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transform: translateX(-50%);
+    transition: opacity 0.6s ease;
+}
+
+.header-content.minimized .main-title {
+    font-size: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.header-content.minimized .welcome-text {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.header-content.minimized .return-message {
+    opacity: 1;
+}
+
+/* Navigation container placed at bottom of screen */
+.anatomy-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Desktop navigation buttons container */
+.desktop-buttons {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+
+/* Individual navigation button styling with hover effects */
+.nav-btn {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 125, 255);
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    width: auto;
+    height: 80px;
+    padding: 20px 8px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(45deg, rgb(0, 125, 255), rgb(255, 20, 145));
+    height: 90px;
+    transform: translateY(-10px);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.nav-btn.active {
+    background-color: rgb(140, 45, 225);
+    height: 85px;
+    transform: translateY(-5px);
+    box-shadow: 0 -3px 10px rgba(140, 45, 225, 0.4);
+    z-index: 1001;
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-btn {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 125, 255);
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 20px;
+    width: 100%;
+    min-height: 60px;
+    padding: 22px;
+    display: none;
+    cursor: pointer;
+    border: none;
+}
+
+/* Mobile dropdown menu container */
+.mobile-menu {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    display: none;
+}
+
+/* Individual mobile navigation buttons */
+.mobile-nav-btn {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 125, 255);
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 16px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 5px;
+    display: block;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.mobile-nav-btn:hover {
+    background-color: rgb(0, 125, 255);
+}
+
+.mobile-nav-btn.active {
+    background-color: rgb(255, 20, 145);
+}
+
+/* Body sprite with different system that scrolls through on the main page */
+.body-sprite {
+    --sprite-width: min(300px, calc((100vh - 20vh - 130px) * 0.5));
+    --sprite-height: min(700px, calc(100vh - 20vh - 150px));
+
+    background: url('images/BodySprites-NonTransparent.jpg') no-repeat;
+    background-size: calc(var(--sprite-width) * 7) var(--sprite-height);
+    width: var(--sprite-width);
+    height: var(--sprite-height);
+    opacity: 1;
+    border: 3px solid rgb(0, 125, 255);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: background-position 0.3s ease, opacity 0.6s ease;
+}
+
+.body-sprite.hidden {
+    opacity: 0;
+}
+
+/* Sprite positions for different body systems */
+.sprite-default {
+    background-position: -6px 0;
+}
+
+.sprite-respiratory {
+    background-position: calc(var(--sprite-width) * -1 - 7px) 0;
+}
+
+.sprite-muscular {
+    background-position: calc(var(--sprite-width) * -3 - 7px) 0;
+}
+
+.sprite-digestive {
+    background-position: calc(var(--sprite-width) * -4 - 5px) 0;
+}
+
+.sprite-circulatory {
+    background-position: calc(var(--sprite-width) * -5 - 4px) 0;
+}
+
+.sprite-nervous {
+    background-position: calc(var(--sprite-width) * -6) 0;
+}
+
+/* Main content area for home page with a centered layout */
+.content-area {
+    background-color: transparent;
+    position: absolute;
+    top: calc(20vh + 35px);
+    left: 50%;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100vh - 20vh - 165px);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    overflow: hidden;
+    transition: top 0.6s ease-in-out, height 0.6s ease-in-out;
+    z-index: 2;
+}
+
+.content-area.expanded {
+    top: calc(10vh + 10px);
+    height: calc(100vh - 10vh - 140px);
+}
+
+/* Container for system specific content pages */
+.system-content-container {
+    position: fixed;
+    top: calc(20vh + 35px);
+    left: 50%;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100vh - 20vh - 115px);
+    pointer-events: none;
+    transform: translateX(-50%);
+    transition: top 0.6s ease-in-out, height 0.6s ease-in-out;
+    z-index: 15;
+}
+
+.system-content-container.expanded {
+    top: calc(10vh + 10px);
+    height: calc(100vh - 10vh - 90px);
+}
+
+/* Layout containers for home page and sprite section */
+.home-layout,
+.sprite-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Individual system information pages with slide-up animation */
+.system-page {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+    display: none;
+    pointer-events: all;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: top 0.6s ease-in-out;
+}
+
+.system-page.active {
+    top: 0;
+}
+
+.system-page h2 {
+    color: rgb(0, 125, 255);
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.2);
+}
+
+.system-page p {
+    color: rgb(50, 50, 50);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Hover description box that appears on system hover */
+.hover-description {
+    background: linear-gradient(to top, rgba(0, 255, 255, 0.9) 0%, rgba(0, 255, 255, 0) 100%);
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    padding: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.hover-description.show {
+    opacity: 1;
+}
+
+.hover-description h3 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hover-description p {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+    opacity: 0.9;
+    text-shadow: 1px 1px 0 rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
+}
+
+/* The QR code that appears on the desktop layout, helps with mobile viewing */
+.qr-code {
+    position: fixed;
+    bottom: 90px;
+    left: 10px;
+    width: 200px;
+    height: auto;
+    opacity: 1.0;
+    z-index: 1;
+}
+
+/* ---------- */
+/* Content page styling for each individual body systems + included minigames */
+
+/* RESPIRATORY */
+.system-intro {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.system-image {
+    width: 420px;
+    height: auto;
+    flex-shrink: 0;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+    background: rgb(225, 245, 255);
+    padding: 25px;
+    flex: 1;
+    border-left: 4px solid rgb(0, 125, 255);
+    border-radius: 10px;
+}
+
+.intro-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.respiratory-section {
+    margin-bottom: 30px;
+}
+
+.respiratory-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.respiratory-section h4 {
+    color: rgb(50, 50, 50);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.respiratory-function-list {
+    padding: 0;
+    list-style: none;
+}
+
+.respiratory-function-list li {
+    background: rgb(255, 255, 255);
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-left: 3px solid rgb(0, 125, 255);
+    border-radius: 8px;
+}
+
+.respiratory-organs-grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.respiratory-organ-item {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.respiratory-organ-item h4 {
+    color: rgb(0, 125, 255);
+    margin-bottom: 8px;
+}
+
+.respiratory-breathing-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.respiratory-breathing-item {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.respiratory-breathing-image {
+    margin-bottom: 15px;
+}
+
+.respiratory-process-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.respiratory-breathing-text h4 {
+    color: rgb(0, 125, 255);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.respiratory-breathing-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.respiratory-game-divider {
+    background: linear-gradient(to right, rgb(0, 125, 255), rgb(255, 20, 145));
+    height: 3px;
+    margin: 40px 0 30px 0;
+    border: none;
+    border-radius: 2px;
+}
+
+.respiratory-game-section {
+    padding: 30px 20px;
+    text-align: center;
+    border: 2px dashed rgb(0, 125, 255);
+    border-radius: 15px;
+}
+
+.respiratory-game-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.respiratory-game-instructions {
+    color: rgb(100, 100, 100);
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.respiratory-game-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.respiratory-game-area {
+    background-color: rgb(225, 225, 225);
+    position: relative;
+    height: 60px;
+    margin-bottom: 25px;
+    border: 3px solid rgb(150, 150, 150);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.respiratory-green-zone {
+    background-color: rgb(75, 175, 75);
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 80px;
+    height: 100%;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(75, 175, 75, 0.5);
+    transition: all 0.5s ease;
+}
+
+.gas-molecule {
+    background-color: rgb(245, 65, 55);
+    position: absolute;
+    top: 6px;
+    left: -50px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.25s ease;
+}
+
+.gas-molecule.oxygen {
+    background-color: rgb(75, 165, 245);
+}
+
+.respiratory-exchange-btn {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(10, 105, 205), rgb(75, 235, 255));
+    font-size: 24px;
+    font-weight: bold;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 125, 255, 0.4);
+    transition: all 0.25s ease;
+}
+
+.respiratory-exchange-btn.game-over {
+    background: linear-gradient(45deg, rgb(115, 40, 40), rgb(235, 125, 125));
+    animation: shake 0.5s ease-in-out;
+}
+
+.respiratory-exchange-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 125, 255, 0.6);
+    transform: scale(1.05);
+}
+
+.respiratory-exchange-btn:active {
+    transform: scale(0.95);
+}
+
+.respiratory-game-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.respiratory-score {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* MUSCULAR */
+.muscular-section {
+    margin-bottom: 30px;
+}
+
+.muscular-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.muscular-section h4 {
+    color: rgb(50, 50, 50);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.muscular-function-list {
+    padding: 0;
+    list-style: none;
+}
+
+.muscular-function-list li {
+    background: rgb(255, 255, 255);
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-left: 3px solid rgb(0, 125, 255);
+    border-radius: 8px;
+}
+
+.muscular-muscles-grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.muscular-muscle-item {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.muscular-muscle-item h4 {
+    color: rgb(0, 125, 255);
+    margin-bottom: 8px;
+}
+
+.muscular-breathing-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.muscular-breathing-item {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.muscular-breathing-image {
+    margin-bottom: 15px;
+}
+
+.muscular-process-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.muscular-breathing-text h4 {
+    color: rgb(0, 125, 255);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.muscular-breathing-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.muscular-game-divider {
+    background: linear-gradient(to right, rgb(0, 125, 255), rgb(255, 20, 145));
+    height: 3px;
+    margin: 40px 0 30px 0;
+    border: none;
+    border-radius: 2px;
+}
+
+.muscular-game-section {
+    background: rgb(255, 255, 255);
+    padding: 30px 20px;
+    text-align: center;
+    border: 2px dashed rgb(0, 125, 255);
+    border-radius: 15px;
+}
+
+.muscular-game-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.muscular-game-instructions {
+    color: rgb(100, 100, 100);
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.muscular-quiz-container {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.muscular-quiz-area {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.muscular-quiz-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.muscular-quiz-header h4 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    margin: 0;
+}
+
+.muscular-quiz-progress {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 125, 255);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.muscular-question-container {
+    margin-bottom: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.muscular-question-text {
+    color: rgb(50, 50, 50);
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.muscular-answer-form {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.muscular-answers-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.muscular-radio-option {
+    color: rgb(50, 50, 50);
+    background: white;
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 16px;
+    position: relative;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.muscular-radio-option:hover {
+    background: rgb(240, 245, 255);
+    transform: translateY(-2px);
+    border-color: rgb(0, 125, 255);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.muscular-radio-option.selected {
+    background: rgb(195, 220, 255);
+    border-color: rgb(0, 125, 255);
+}
+
+.muscular-radio-option.correct {
+    color: rgb(25, 85, 35);
+    background: rgb(205, 255, 185);
+    border-color: rgb(50, 165, 75);
+}
+
+.muscular-radio-option.incorrect {
+    color: rgb(115, 35, 35);
+    background: rgb(255, 175, 175);
+    border-color: rgb(220, 55, 60);
+}
+
+.muscular-radio-option.highlight-correct {
+    color: rgb(145, 100, 5);
+    background: rgb(255, 215, 175);
+    border-color: rgb(255, 195, 10);
+    animation: pulse 0.5s ease-in-out;
+}
+
+.muscular-radio-input {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    accent-color: rgb(0, 125, 255);
+    cursor: pointer;
+}
+
+.muscular-radio-label {
+    margin: 0;
+    flex: 1;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.muscular-quiz-controls {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.muscular-next-btn {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(0, 125, 255), rgb(75, 165, 245));
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.muscular-next-btn:hover:not(:disabled) {
+    background: linear-gradient(45deg, rgb(10, 105, 205), rgb(0, 125, 255));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.muscular-next-btn:disabled {
+    color: rgb(150, 150, 150);
+    background: rgb(225, 225, 225);
+    cursor: not-allowed;
+}
+
+.muscular-score-display {
+    background: rgb(225, 245, 255);
+    margin-bottom: 15px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid rgb(50, 165, 75);
+    border-radius: 10px;
+}
+
+.muscular-score-display h4 {
+    color: rgb(25, 90, 40);
+    margin: 0;
+}
+
+.muscular-score-display p {
+    color: rgb(25, 90, 40);
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+}
+
+.muscular-restart-btn {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(40, 165, 70), rgb(35, 205, 155));
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.muscular-restart-btn:hover {
+    background: linear-gradient(45deg, rgb(30, 200, 150), rgb(25, 165, 185));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.muscular-image-area {
+    width: 400px;
+}
+
+.muscular-diagram {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* DIGESTIVE */
+.digestive-section {
+    margin-bottom: 30px;
+}
+
+.digestive-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.digestive-section h4 {
+    color: rgb(50, 50, 50);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.digestive-function-list {
+    padding: 0;
+    list-style: none;
+}
+
+.digestive-function-list li {
+    background: rgb(255, 255, 255);
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-left: 3px solid rgb(0, 125, 255);
+    border-radius: 8px;
+}
+
+.digestive-organs-grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.digestive-organ-item {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.digestive-organ-item h4 {
+    color: rgb(0, 125, 255);
+    margin-bottom: 8px;
+}
+
+.digestive-process-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;
+}
+
+.digestive-process-item {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.digestive-process-image {
+    margin-bottom: 15px;
+}
+
+.digestive-step-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.digestive-process-text h4 {
+    color: rgb(0, 125, 255);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.digestive-process-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.digestive-top-layout {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.digestive-calculator-side {
+    flex: 1;
+}
+
+.digestive-info-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.digestive-image-area {
+    margin-bottom: 20px;
+}
+
+.digestive-diagram {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.digestive-intro-text {
+    background: rgb(225, 245, 255);
+    padding: 20px;
+    border-left: 4px solid rgb(0, 125, 255);
+    border-radius: 10px;
+}
+
+.digestive-intro-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.digestive-intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.digestive-game-section {
+    background: rgb(225, 245, 255);
+    padding: 30px 20px;
+    text-align: center;
+    border: 2px dashed rgb(0, 125, 255);
+    border-radius: 15px;
+}
+
+.digestive-game-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.digestive-calculator-area {
+    background: rgb(225, 245, 255);
+    padding: 25px;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.digestive-input-section {
+    margin-bottom: 25px;
+}
+
+.digestive-input-section h4 {
+    color: rgb(0, 125, 255);
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.digestive-input-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.digestive-input-group label {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 120px;
+    text-align: right;
+}
+
+.digestive-input-group input,
+.digestive-input-group select {
+    background: rgb(255, 255, 255);
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 12px;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.digestive-input-group input:focus,
+.digestive-input-group select:focus {
+    border-color: rgb(0, 125, 255);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 125, 255, 0.3);
+}
+
+.digestive-input-group input {
+    width: 180px;
+}
+
+.digestive-input-group select {
+    width: 120px;
+}
+
+.digestive-info-description {
+    background: rgb(225, 245, 255);
+    margin-bottom: 20px;
+    padding: 15px;
+    text-align: left;
+    border-left: 4px solid rgb(40, 165, 70);
+    border-radius: 8px;
+}
+
+.digestive-info-description p {
+    color: rgb(25, 100, 35);
+    font-size: 14px;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.digestive-info-description p:last-child {
+    margin-bottom: 0;
+}
+
+.digestive-calculate-btn {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(0, 125, 255), rgb(75, 165, 245));
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.digestive-calculate-btn:hover {
+    background: linear-gradient(45deg, rgb(10, 105, 205), rgb(0, 125, 255));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.digestive-results-section {
+    margin-top: 25px;
+    padding-top: 25px;
+    text-align: left;
+    border-top: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.digestive-results-section h4 {
+    color: rgb(0, 125, 255);
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.digestive-results-grid {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.digestive-result-item {
+    background: rgb(255, 255, 255);
+    min-height: 140px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.digestive-result-item h5 {
+    color: rgb(0, 125, 255);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.digestive-result-value {
+    color: rgb(50, 50, 50);
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.digestive-result-category {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.digestive-result-description {
+    color: rgb(100, 100, 100);
+    font-size: 13px;
+    margin-top: auto;
+    line-height: 1.4;
+}
+
+.bmi-underweight {
+    background: rgb(55, 165, 235);
+}
+
+.bmi-normal {
+    background: rgb(40, 165, 70);
+}
+
+.bmi-overweight {
+    background: rgb(255, 195, 10);
+}
+
+.bmi-obese {
+    background: rgb(220, 55, 70);
+}
+
+.bodyfat-low {
+    background: rgb(55, 165, 235);
+}
+
+.bodyfat-normal {
+    background: rgb(40, 165, 70);
+}
+
+.bodyfat-high {
+    background: rgb(255, 195, 10);
+}
+
+.bodyfat-very-high {
+    background: rgb(220, 55, 70);
+}
+
+/* CIRCULATORY */
+.circulatory-section {
+    margin-bottom: 30px;
+}
+
+.circulatory-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.circulatory-section h4 {
+    color: rgb(50, 50, 50);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.circulatory-top-layout {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.circulatory-game-side {
+    flex: 1;
+}
+
+.circulatory-info-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.circulatory-image-area {
+    margin-bottom: 20px;
+}
+
+.circulatory-diagram {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.circulatory-intro-text {
+    background: rgb(225, 245, 255);
+    padding: 20px;
+    border-left: 4px solid rgb(0, 125, 255);
+    border-radius: 10px;
+}
+
+.circulatory-intro-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.circulatory-intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.circulatory-function-list {
+    padding: 0;
+    list-style: none;
+}
+
+.circulatory-function-list li {
+    background: rgb(255, 255, 255);
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-left: 3px solid rgb(0, 125, 255);
+    border-radius: 8px;
+}
+
+.circulatory-organs-grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.circulatory-organ-item {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.circulatory-organ-item h4 {
+    color: rgb(0, 125, 255);
+    margin-bottom: 8px;
+}
+
+.circulatory-process-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;
+}
+
+.circulatory-process-item {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.circulatory-process-image {
+    margin-bottom: 15px;
+}
+
+.circulatory-step-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.circulatory-process-text h4 {
+    color: rgb(0, 125, 255);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.circulatory-process-text p {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.circulatory-game-section {
+    background: rgb(225, 245, 255);
+    padding: 30px 20px;
+    text-align: center;
+    border: 2px dashed rgb(0, 125, 255);
+    border-radius: 15px;
+}
+
+.circulatory-game-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.circulatory-game-area {
+    background: rgb(225, 245, 255);
+    padding: 25px;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.heart-game-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.heart-animation-area {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-pulse-circle {
+    background: rgba(0, 125, 255, 0.1);
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 125, 255, 0.6);
+    border-radius: 50%;
+}
+
+.heart-pulse-circle.pulse-animation {
+    animation: heartPulse 0.5s ease-out;
+}
+
+.heart-icon {
+    font-size: 5rem;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+    z-index: 2;
+}
+
+.heart-icon:hover {
+    transform: scale(1.1);
+}
+
+.rhythm-feedback {
+    background: rgb(225, 245, 255);
+    min-height: 50px;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-left: 4px solid rgb(40, 165, 70);
+    border-radius: 8px;
+}
+
+.rhythm-feedback p {
+    color: rgb(25, 100, 35);
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bpm-input-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.bpm-input-group label {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 100px;
+    text-align: right;
+}
+
+.bpm-input-group input {
+    background: rgb(255, 255, 255);
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 16px;
+    width: 100px;
+    padding: 10px 12px;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.bpm-input-group input:focus {
+    border-color: rgb(0, 125, 255);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 125, 255, 0.3);
+}
+
+.set-bpm-btn {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(0, 125, 255), rgb(75, 165, 245));
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.set-bpm-btn:hover {
+    background: linear-gradient(45deg, rgb(10, 105, 205), rgb(0, 125, 255));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bpm-display-group {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bpm-display {
+    color: rgb(50, 50, 50);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bpm-display span {
+    color: rgb(0, 125, 255);
+    font-weight: bold;
+}
+
+.reset-game-btn {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(0, 125, 255), rgb(75, 165, 245));
+    font-family: 'Good-Timing', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-game-btn:hover {
+    background: linear-gradient(45deg, rgb(10, 105, 205), rgb(0, 125, 255));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes heartPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+        border-color: rgba(0, 125, 255, 0.8);
+    }
+
+    50% {
+        transform: scale(3.5);
+        opacity: 0.4;
+        border-color: rgba(0, 125, 255, 0.6);
+    }
+
+    100% {
+        transform: scale(4.5);
+        opacity: 0;
+        border-color: rgba(0, 125, 255, 0.2);
+    }
+}
+
+/* NERVOUS */
+.nervous-section {
+    margin-bottom: 30px;
+}
+
+.nervous-section h3 {
+    color: rgb(0, 125, 255);
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0, 125, 255, 0.3);
+}
+
+.nervous-section h4 {
+    color: rgb(50, 50, 50);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.nervous-function-list {
+    padding: 0;
+    list-style: none;
+}
+
+.nervous-function-list li {
+    background: rgb(255, 255, 255);
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-left: 3px solid rgb(0, 125, 255);
+    border-radius: 8px;
+}
+
+.nervous-organs-grid {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.nervous-organ-item {
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nervous-organ-item h4 {
+    color: rgb(0, 125, 255);
+    margin-bottom: 8px;
+}
+
+.nervous-communication-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+}
+
+.nervous-communication-item {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nervous-communication-image {
+    margin-bottom: 15px;
+}
+
+.nervous-process-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid rgb(0, 125, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nervous-communication-text h4 {
+    color: rgb(0, 125, 255);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nervous-communication-text p {
+    color: rgb(50, 50, 50);
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ---------- */
+/* Mobile responsive design for both desktop and mobile (under 800px) */
+@media screen and (max-width: 799px) {
+    .gradient-header {
+        height: 15vh;
+        padding: 16px;
+    }
+
+    .gradient-header.minimized {
+        transform: translateY(-60%);
+    }
+
+    .main-title {
+        font-size: clamp(24px, 8vw, 40px);
+        line-height: 1.0;
+        max-width: clamp(240px, calc(50vw + 100px), 380px);
+        margin-bottom: 0px;
+    }
+
+    .header-content.minimized .main-title {
+        font-size: 4vw;
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    .welcome-text {
+        display: none;
+    }
+
+    .return-message {
+        font-size: calc(6px + 1.8vw);
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 0 8px;
+        line-height: 1.2;
+        text-align: center;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .content-area {
+        background-color: transparent;
+        position: absolute;
+        top: calc(15vh + 30px);
+        left: 50%;
+        width: 100%;
+        max-width: 1200px;
+        height: calc(100vh - 15vh - 120px);
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-50%);
+        overflow: hidden;
+        z-index: 2;
+    }
+
+    .content-area.expanded {
+        top: calc(7.5vh + 15px);
+        height: calc(100vh - 7.5vh - 105px);
+    }
+
+    .system-content-container {
+        top: calc(15vh + 30px);
+        height: calc(100vh - 15vh - 90px);
+        padding: 0 16px;
+    }
+
+    .system-content-container.expanded {
+        top: calc(7.5vh + 15px);
+        height: calc(100vh - 7.5vh - 75px);
+    }
+
+    .body-sprite {
+        --available-width: calc(100vw - 32px);
+        --available-height: calc(100vh - 15vh - 130px);
+        --height-based-width: calc(var(--available-height) * 0.4);
+        --mobile-width: min(500px, var(--available-width), var(--height-based-width));
+        --mobile-height: min(1200px, var(--available-height), calc(var(--mobile-width) * 2.5));
+
+        background-size: calc(var(--mobile-width) * 7) var(--mobile-height);
+        width: var(--mobile-width);
+        height: var(--mobile-height);
+    }
+
+    .sprite-respiratory {
+        background-position: calc(var(--mobile-width) * -1 - 8px) 0;
+    }
+
+    .sprite-muscular {
+        background-position: calc(var(--mobile-width) * -3 - 7px) 0;
+    }
+
+    .sprite-digestive {
+        background-position: calc(var(--mobile-width) * -4 - 6px) 0;
+    }
+
+    .sprite-circulatory {
+        background-position: calc(var(--mobile-width) * -5 - 5px) 0;
+    }
+
+    .sprite-nervous {
+        background-position: calc(var(--mobile-width) * -6) 0;
+    }
+
+    .desktop-buttons {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .mobile-menu.show {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        display: block;
+    }
+
+    .system-page {
+        padding: 20px;
+    }
+
+    .system-page h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .system-page p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .hover-description {
+        bottom: 325px;
+        height: 120px;
+        padding: 0 16px 16px 16px;
+    }
+
+    .hover-description h3 {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .hover-description p {
+        font-size: 16px;
+        line-height: 1.4;
+        text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    }
+
+    .qr-code {
+        display: none;
+    }
+
+    /* ---------- */
+    /* Content page styling for each individual body systems + included minigames */
+
+    /* RESPIRATORY */
+    .system-intro {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .system-image {
+        width: 100%;
+        max-width: 300px;
+        align-self: center;
+    }
+
+    .intro-text {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .respiratory-section h3 {
+        font-size: 20px;
+    }
+
+    .respiratory-organs-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .respiratory-organ-item {
+        padding: 12px;
+    }
+
+    .respiratory-breathing-grid {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .respiratory-breathing-item {
+        background: rgb(255, 255, 255);
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border: 1px solid rgb(225, 225, 225);
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .respiratory-breathing-image {
+        margin-bottom: 12px;
+    }
+
+    .respiratory-process-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border: 2px solid rgb(0, 125, 255);
+        border-radius: 8px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .respiratory-breathing-text h4 {
+        color: rgb(0, 125, 255);
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .respiratory-breathing-text p {
+        color: rgb(50, 50, 50);
+        font-size: 16px;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .respiratory-game-section {
+        padding: 20px 10px;
+        margin: 20px 0;
+    }
+
+    .respiratory-game-section h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .respiratory-game-instructions {
+        font-size: 14px;
+        padding: 0 5px;
+        margin-bottom: 20px;
+    }
+
+    .respiratory-game-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .respiratory-game-area {
+        width: 100%;
+        max-width: calc(100vw - 40px);
+        height: 50px;
+        margin-bottom: 20px;
+    }
+
+    .respiratory-green-zone {
+        left: 150px;
+        width: 60px;
+        height: 100%;
+    }
+
+    .gas-molecule {
+        top: 2px;
+    }
+
+    .respiratory-exchange-btn {
+        font-size: 18px;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
+    }
+
+    .respiratory-score {
+        font-size: 24px;
+    }
+
+    /* MUSCULAR */
+    .muscular-quiz-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .muscular-image-area {
+        width: 100%;
+        order: 2;
+    }
+
+    .muscular-quiz-area {
+        order: 1;
+    }
+
+    .muscular-quiz-header {
+        text-align: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .muscular-breathing-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .muscular-breathing-item {
+        padding: 15px;
+    }
+
+    .muscular-breathing-image {
+        margin-bottom: 10px;
+    }
+
+    .muscular-process-image {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .muscular-breathing-text h4 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .muscular-breathing-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .muscular-game-section {
+        margin: 0;
+        padding: 20px 10px;
+    }
+
+    .muscular-game-section h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .muscular-game-instructions {
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 0 5px;
+    }
+
+    .muscular-quiz-container {
+        gap: 20px;
+    }
+
+    .muscular-quiz-area {
+        padding: 20px 15px;
+    }
+
+    .muscular-question-text {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .muscular-radio-option {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+
+    .muscular-radio-input {
+        width: 18px;
+        height: 18px;
+        margin-right: 12px;
+    }
+
+    .muscular-next-btn,
+    .muscular-restart-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .muscular-score-display {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .muscular-score-display p {
+        font-size: 16px;
+    }
+
+    /* DIGESTIVE */
+    .digestive-top-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .digestive-calculator-side,
+    .digestive-info-side {
+        width: 100%;
+        flex: none;
+    }
+
+    .digestive-organs-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .digestive-organ-item {
+        padding: 12px;
+    }
+
+    .digestive-process-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    .digestive-process-item {
+        padding: 15px;
+    }
+
+    .digestive-process-image {
+        margin-bottom: 10px;
+    }
+
+    .digestive-step-image {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .digestive-process-text h4 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .digestive-process-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .digestive-game-section {
+        margin: 0;
+        padding: 20px 10px;
+    }
+
+    .digestive-game-section h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .digestive-calculator-area {
+        padding: 20px 15px;
+    }
+
+    .digestive-input-section h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .digestive-input-group {
+        margin-bottom: 18px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .digestive-input-group label {
+        font-size: 15px;
+        min-width: auto;
+        text-align: center;
+    }
+
+    .digestive-input-group input,
+    .digestive-input-group select {
+        font-size: 16px;
+        width: 100%;
+        max-width: 280px;
+        padding: 12px;
+    }
+
+    .digestive-info-description {
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+
+    .digestive-info-description p {
+        font-size: 14px;
+        margin-bottom: 5px;
+        line-height: 1.2;
+    }
+
+    .digestive-calculate-btn {
+        font-size: 16px;
+        margin-top: 15px;
+        padding: 12px 25px;
+    }
+
+    .digestive-results-section {
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+
+    .digestive-results-section h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .digestive-results-grid {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .digestive-result-item {
+        background: rgb(255, 255, 255);
+        min-height: 120px;
+        padding: 18px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        border: 1px solid rgb(225, 225, 225);
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .digestive-result-item h5 {
+        color: rgb(0, 125, 255);
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .digestive-result-value {
+        color: rgb(50, 50, 50);
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    .digestive-result-category {
+        color: rgb(255, 255, 255);
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 6px;
+        padding: 5px 10px;
+        display: inline-block;
+        border-radius: 20px;
+    }
+
+    .digestive-result-description {
+        color: rgb(100, 100, 100);
+        font-size: 12px;
+        margin-top: auto;
+        line-height: 1.3;
+    }
+
+    /* CIRCULATORY */
+    .circulatory-section {
+        margin-bottom: 25px;
+        padding: 15px;
+    }
+
+    .circulatory-section h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .circulatory-section h4 {
+        font-size: 16px;
+    }
+
+    .circulatory-top-layout {
+        margin-bottom: 30px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .circulatory-game-side,
+    .circulatory-info-side {
+        width: 100%;
+        flex: none;
+    }
+
+    .circulatory-diagram {
+        padding: 8px;
+    }
+
+    .circulatory-intro-text {
+        padding: 15px;
+    }
+
+    .circulatory-intro-text p {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .circulatory-function-list li {
+        font-size: 14px;
+        margin-bottom: 6px;
+        padding: 10px 12px;
+    }
+
+    .circulatory-organs-grid {
+        margin-top: 12px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .circulatory-organ-item {
+        padding: 12px;
+    }
+
+    .circulatory-organ-item h4 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .circulatory-organ-item p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .circulatory-process-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    .circulatory-process-item {
+        padding: 15px;
+    }
+
+    .circulatory-process-image {
+        margin-bottom: 10px;
+    }
+
+    .circulatory-step-image {
+        width: 100%;
+        max-width: 350px;
+        border-width: 1px;
+    }
+
+    .circulatory-process-text h4 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .circulatory-process-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .circulatory-game-section {
+        padding: 20px 15px;
+    }
+
+    .circulatory-game-section h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .circulatory-game-area {
+        padding: 20px 15px;
+    }
+
+    .heart-animation-area {
+        width: 100px;
+        height: 100px;
+    }
+
+    .heart-pulse-circle {
+        width: 30px;
+        height: 30px;
+    }
+
+    .heart-icon {
+        font-size: 4rem;
+    }
+
+    .rhythm-feedback {
+        min-height: 40px;
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+
+    .rhythm-feedback p {
+        font-size: 14px;
+    }
+
+    .game-controls {
+        gap: 12px;
+    }
+
+    .bpm-input-group {
+        margin-bottom: 12px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .bpm-input-group label {
+        font-size: 14px;
+        min-width: auto;
+        text-align: center;
+    }
+
+    .bpm-input-group input {
+        font-size: 14px;
+        width: 120px;
+        padding: 8px 10px;
+    }
+
+    .set-bpm-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .bpm-display-group {
+        padding: 12px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .bpm-display {
+        font-size: 14px;
+    }
+
+    .reset-game-btn {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+
+    @keyframes heartPulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.8;
+            border-color: rgba(0, 125, 255, 0.8);
+        }
+
+        50% {
+            transform: scale(4.0);
+            opacity: 0.4;
+            border-color: rgba(0, 125, 255, 0.6);
+        }
+
+        100% {
+            transform: scale(5.0);
+            opacity: 0;
+            border-color: rgba(0, 125, 255, 0.2);
+        }
+    }
+
+    /* NERVOUS */
+    .nervous-section h3 {
+        font-size: 20px;
+    }
+
+    .nervous-organs-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .nervous-organ-item {
+        padding: 12px;
+    }
+
+    .nervous-communication-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    .nervous-communication-item {
+        padding: 15px;
+    }
+
+    .nervous-communication-image {
+        margin-bottom: 10px;
+    }
+
+    .nervous-process-image {
+        width: 100%;
+        max-width: 350px;
+        border-width: 1px;
+    }
+
+    .nervous-communication-text h4 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .nervous-communication-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

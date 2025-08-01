@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title where it shows in the tab, along with the cool icon I made! -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Functions of the Human Body</title>
+    <link rel="icon" type="image/x-icon" href="images/page_icon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Images Layers, which toggles visibility on hover -->
+    <div class="background-images-layer">
+        <div id="defaultBg" class="background-image bg-default show"></div>
+        <div id="respiratoryBg" class="background-image bg-respiratory"></div>
+        <div id="muscularBg" class="background-image bg-muscular"></div>
+        <div id="digestiveBg" class="background-image bg-digestive"></div>
+        <div id="circulatoryBg" class="background-image bg-circulatory"></div>
+        <div id="nervousBg" class="background-image bg-nervous"></div>
+    </div>
+
+    <!-- Header with the page title and a brief welcome message -->
+    <header class="gradient-header">
+        <div class="header-content">
+            <h1 class="main-title">Functions of the Human Body</h1>
+            <p class="welcome-text">Welcome! Here you will learn the functions of each system!</p>
+            <div class="return-message">Click here to return to the Main Menu</div>
+        </div>
+    </header>
+
+    <!-- Main content area containing the primary page content -->
+    <main class="content-area">
+        <div class="page" id="home">
+            <div class="home-layout">
+                <div class="sprite-section">
+                    <figure id="bodySprite" class="body-sprite sprite-default"></figure>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Container for individual body system information and a quick simple mini-game (if available) -->
+    <div class="system-content-container">
+        <!-- RESPIRATORY SYSTEM -->
+        <article class="system-page" id="respiratory-content">
+            <header>
+                <h2>Respiratory System</h2>
+            </header>
+
+            <!-- System Overview -->
+            <div class="system-intro">
+                <img src="images/img-respiratory-main.jpg"
+                    alt="Respiratory system anatomy diagram showing lungs, trachea, and diaphragm" class="system-image">
+                <div class="intro-text">
+                    <p>Your respiratory system is made up of your lungs, airways (trachea, bronchi and bronchioles),
+                        diaphragm, voice box, throat, nose and mouth. Its main function is to breathe in oxygen and
+                        breathe out carbon dioxide while protecting you from harmful particles.</p>
+                    <p>These organs work together as your body's breathing network by bringing oxygen in when you inhale
+                        and removing carbon dioxide when you exhale. You also have muscles and blood vessels that
+                        support your respiratory system.</p>
+                </div>
+            </div>
+
+            <!-- Main Functions Section -->
+            <section class="respiratory-section">
+                <h3>Main Functions</h3>
+                <ul class="respiratory-function-list">
+                    <li><b>Scent Recognition:</b> Moves air molecules past your olfactory nerve, which sends
+                        smell messages to your brain</li>
+                    <li><b>Vocal Sound Production:</b> Allows you to talk by vibrating air through your vocal
+                        cords to create sounds</li>
+                    <li><b>Cellular Respiration:</b> Pulls in oxygen for your body's cells and removes carbon
+                        dioxide waste through the small air sacs (alveoli) in your lungs</li>
+                    <li><b>Temperature & Humidity Control:</b> Warms air to match your body temperature and
+                        adds moisture to bring it to the humidity level your body needs</li>
+                    <li><b>Protection & Filtration:</b> Blocks harmful germs and irritants from getting in, or
+                        pushes them out if they do manage to enter</li>
+                    <li><b>Blood pH Balance:</b> Helps maintain proper blood pH by controlling carbon dioxide
+                        levels, which prevents your blood from becoming too acidic</li>
+                </ul>
+            </section>
+
+            <!-- Key Organs Section -->
+            <section class="respiratory-section">
+                <h3>Key Organs & Parts</h3>
+                <div class="respiratory-organs-grid">
+                    <article class="respiratory-organ-item">
+                        <h4>Nose & Mouth</h4>
+                        <p>Entry points for air. Your nose filters, warms, and adds moisture to incoming air.</p>
+                    </article>
+                    <article class="respiratory-organ-item">
+                        <h4>Trachea (Windpipe)</h4>
+                        <p>The main airway tube that carries air from your throat to your lungs.</p>
+                    </article>
+                    <article class="respiratory-organ-item">
+                        <h4>Bronchi & Bronchioles</h4>
+                        <p>Branching tubes that carry air deeper into your lungs, like branches of a tree.</p>
+                    </article>
+                    <article class="respiratory-organ-item">
+                        <h4>Lungs</h4>
+                        <p>Two spongy organs that contain millions of tiny air sacs called alveoli.</p>
+                    </article>
+                    <article class="respiratory-organ-item">
+                        <h4>Alveoli</h4>
+                        <p>Tiny air sacs where oxygen enters your blood and carbon dioxide is removed.</p>
+                    </article>
+                    <article class="respiratory-organ-item">
+                        <h4>Diaphragm</h4>
+                        <p>The main breathing muscle that helps your lungs expand and contract.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Breathing Process Section -->
+            <section class="respiratory-section">
+                <h3>How Breathing Works</h3>
+                <div class="respiratory-breathing-grid">
+                    <article class="respiratory-breathing-item">
+                        <figure class="respiratory-breathing-image">
+                            <img src="images/img-respiratory-step1.jpg"
+                                alt="Lung expansion during inhalation showing diaphragm moving down"
+                                class="respiratory-process-image">
+                        </figure>
+                        <div class="respiratory-breathing-text">
+                            <h4>1. Inhalation (Breathing In)</h4>
+                            <p>Your diaphragm contracts and moves downward while your rib muscles expand your chest
+                                cavity. This creates more space, causing your lungs to expand and draw fresh air
+                                containing oxygen into your body.</p>
+                        </div>
+                    </article>
+
+                    <article class="respiratory-breathing-item">
+                        <figure class="respiratory-breathing-image">
+                            <img src="images/img-respiratory-step2.jpg"
+                                alt="Oxygen and carbon dioxide exchange in lung alveoli"
+                                class="respiratory-process-image">
+                        </figure>
+                        <div class="respiratory-breathing-text">
+                            <h4>2. Gas Exchange</h4>
+                            <p>In tiny air sacs called alveoli, oxygen from the air passes through thin walls into your
+                                bloodstream. At the same time, carbon dioxide (waste gas) moves from your blood into the
+                                alveoli to be removed from your body.</p>
+                        </div>
+                    </article>
+
+                    <article class="respiratory-breathing-item">
+                        <figure class="respiratory-breathing-image">
+                            <img src="images/img-respiratory-step3.jpg"
+                                alt="Lung compression during exhalation with diaphragm moving up"
+                                class="respiratory-process-image">
+                        </figure>
+                        <div class="respiratory-breathing-text">
+                            <h4>3. Exhalation (Breathing Out)</h4>
+                            <p>Your diaphragm relaxes and moves upward while your rib muscles relax, making your chest
+                                cavity smaller. This pushes the carbon dioxide-filled air out of your lungs and through
+                                your nose or mouth.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <hr class="respiratory-game-divider">
+
+            <!-- Respiratory Mini-Game Section -->
+            <section class="respiratory-game-section">
+                <h3>Respiratory Mini-Game</h3>
+                <p class="respiratory-game-instructions">Exchange Red CO2 Circles (Carbon Dioxide) for blue O2 Circles
+                    (Oxygen)! Click "EXCHANGE" only when the CO2 is in the green zone and score as high as you can
+                    without missing!</p>
+                <div class="respiratory-game-container">
+                    <div class="respiratory-game-area">
+                        <div class="respiratory-green-zone" id="greenZone"></div>
+                    </div>
+                    <div class="respiratory-game-controls">
+                        <button class="respiratory-exchange-btn" id="exchangeBtn" type="button">PLAY</button>
+                        <div>
+                            <span class="respiratory-score" id="scoreDisplay">Successful Exchange: 0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- MUSCULAR SYSTEM -->
+        <article class="system-page" id="muscular-content">
+            <header>
+                <h2>Muscular System</h2>
+            </header>
+
+            <!-- System Overview -->
+            <div class="system-intro">
+                <img src="images/img-muscular-main.jpg"
+                    alt="Detailed muscle fiber anatomy showing slow-twitch and fast-twitch fibers, epimysium, blood vessels, nuclei, I bands, and A bands"
+                    class="system-image">
+                <div class="intro-text">
+                    <p>The muscular system is composed of over 600 muscles that work together to create movement,
+                        maintain posture, and generate heat for the body.</p>
+                    <p>Your muscles contain different types of fibers - slow-twitch fibers that are great for
+                        endurance activities like marathon running, and fast-twitch fibers that provide explosive
+                        power for activities like sprinting and weightlifting.</p>
+                    <p>Beyond movement, muscles work with bones to enable every action, making every step, jump, and
+                        gesture possible through coordinated contractions and relaxations.</p>
+                </div>
+            </div>
+
+            <!-- Main Functions Section -->
+            <section class="muscular-section">
+                <h3>Main Functions</h3>
+                <ul class="muscular-function-list">
+                    <li><b>Movement:</b> Contracts and relaxes to create motion at joints throughout the body</li>
+                    <li><b>Posture Support:</b> Maintains body position and prevents collapse against gravity</li>
+                    <li><b>Heat Generation:</b> Produces warmth through muscle contractions to regulate body
+                        temperature</li>
+                    <li><b>Joint Stability:</b> Provides support and protection to joints during movement</li>
+                    <li><b>Circulation Assistance:</b> Helps pump blood back to the heart, especially in the
+                        legs</li>
+                    <li><b>Organ Protection:</b> Abdominal muscles protect internal organs from injury</li>
+                </ul>
+            </section>
+
+            <!-- Key Muscle Groups Section -->
+            <section class="muscular-section">
+                <h3>Major Muscle Groups</h3>
+                <div class="muscular-muscles-grid">
+                    <article class="muscular-muscle-item">
+                        <h4>Chest (Pectorals)</h4>
+                        <p>Large muscles that control pushing movements and arm adduction. Essential for activities like
+                            push-ups and throwing.</p>
+                    </article>
+                    <article class="muscular-muscle-item">
+                        <h4>Back (Latissimus Dorsi)</h4>
+                        <p>Broad muscles that control pulling movements and help maintain posture. Important for rowing
+                            and climbing motions.</p>
+                    </article>
+                    <article class="muscular-muscle-item">
+                        <h4>Shoulders (Deltoids)</h4>
+                        <p>Three-part muscles that allow arm lifting in all directions. Critical for overhead movements
+                            and arm rotation.</p>
+                    </article>
+                    <article class="muscular-muscle-item">
+                        <h4>Arms (Biceps & Triceps)</h4>
+                        <p>Opposing muscles that bend and straighten the elbow. Biceps pull, triceps push - they work as
+                            antagonistic pairs.</p>
+                    </article>
+                    <article class="muscular-muscle-item">
+                        <h4>Core (Abdominals)</h4>
+                        <p>Central muscles that stabilize the spine and transfer power between upper and lower body
+                            during movement.</p>
+                    </article>
+                    <article class="muscular-muscle-item">
+                        <h4>Legs (Quadriceps & Hamstrings)</h4>
+                        <p>Powerful muscles that control knee movement. Quadriceps straighten the leg, hamstrings bend
+                            it.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Muscle Process Section -->
+            <section class="muscular-section">
+                <h3>How Muscles Contract</h3>
+                <div class="muscular-breathing-grid">
+                    <article class="muscular-breathing-item">
+                        <figure class="muscular-breathing-image">
+                            <img src="images/img-muscular-step1.jpg"
+                                alt="Concentric muscle contraction showing muscle fibers shortening during movement"
+                                class="muscular-process-image">
+                        </figure>
+                        <div class="muscular-breathing-text">
+                            <h4>1. Concentric Contraction</h4>
+                            <p>Your muscle fibers shorten and pull together as actin and myosin filaments slide past
+                                each other. This creates the force needed to lift weights, climb stairs, or perform any
+                                movement where muscles work against resistance.</p>
+                        </div>
+                    </article>
+
+                    <article class="muscular-breathing-item">
+                        <figure class="muscular-breathing-image">
+                            <img src="images/img-muscular-step2.jpg"
+                                alt="Eccentric muscle contraction showing controlled muscle lengthening under tension"
+                                class="muscular-process-image">
+                        </figure>
+                        <div class="muscular-breathing-text">
+                            <h4>2. Eccentric Contraction</h4>
+                            <p>Your muscles lengthen while still under tension, providing controlled resistance. This
+                                happens when you slowly lower a weight, walk downstairs, or control your body's movement
+                                against gravity.</p>
+                        </div>
+                    </article>
+
+                    <article class="muscular-breathing-item">
+                        <figure class="muscular-breathing-image">
+                            <img src="images/img-muscular-step3.jpg"
+                                alt="Isometric muscle contraction showing muscle tension without movement"
+                                class="muscular-process-image">
+                        </figure>
+                        <div class="muscular-breathing-text">
+                            <h4>3. Isometric Contraction</h4>
+                            <p>Your muscles generate force and tension without changing length or creating visible
+                                movement. This occurs during planks, wall sits, or when you hold a heavy object in place
+                                without moving it.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <hr class="muscular-game-divider">
+
+            <!-- Muscular Mini-Game Section -->
+            <section class="muscular-game-section">
+                <h3>Muscular Mini-Game</h3>
+                <p class="muscular-game-instructions">A multi-choice question mini-game that tests your knowledge about
+                    muscles, muscle groups, and various functions. With 5 random questions to choose from, will you get
+                    them all correct?</p>
+                <div class="muscular-quiz-container">
+                    <div class="muscular-quiz-area">
+                        <header class="muscular-quiz-header">
+                            <h4 id="muscularQuestionHeader">Question 1</h4>
+                            <div class="muscular-quiz-progress">
+                                <span id="muscularCurrentQtn">1</span> / <span id="muscularTotalQtn">5</span>
+                            </div>
+                        </header>
+                        <div class="muscular-question-container">
+                            <h3 id="muscularQuestion" class="muscular-question-text">Loading question...</h3>
+                            <form id="muscularAnswerForm" class="muscular-answer-form">
+                                <div id="muscularAnswers" class="muscular-answers-grid"></div>
+                            </form>
+                        </div>
+                        <div class="muscular-quiz-controls">
+                            <button id="muscularNextBtn" class="muscular-next-btn" disabled>Next Question</button>
+                        </div>
+                        <div id="muscularScoreDisplay" class="muscular-score-display" style="display: none;">
+                            <h4>Quiz Complete!</h4>
+                            <p>Your Score: <span id="muscularFinalScore">0</span> / 5</p>
+                            <button id="muscularRestartBtn" class="muscular-restart-btn">Try Again</button>
+                        </div>
+                    </div>
+
+                    <figure class="muscular-image-area">
+                        <img src="images/img-muscular-chart.jpg"
+                            alt="Complete human muscular system anatomy diagram showing all major muscle groups in detail"
+                            class="muscular-diagram">
+                    </figure>
+                </div>
+            </section>
+        </article>
+
+        <!-- DIGESTIVE SYSTEM -->
+        <article class="system-page" id="digestive-content">
+            <header>
+                <h2>Digestive System</h2>
+            </header>
+
+            <div class="digestive-top-layout">
+                <aside class="digestive-calculator-side">
+                    <!-- Digestive Calculator Section -->
+                    <section class="digestive-game-section">
+                        <h3>BMI & Body Fat Calculator</h3>
+                        <form class="digestive-calculator-area">
+                            <div class="digestive-input-section">
+                                <div class="digestive-input-group">
+                                    <label for="userGender">Gender:</label>
+                                    <select id="userGender" name="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="digestive-input-group">
+                                    <label for="userAge">Age (years):</label>
+                                    <input type="number" id="userAge" name="age" placeholder="Enter Age" min="16"
+                                        max="100" required>
+                                </div>
+                                <div class="digestive-input-group">
+                                    <label for="userHeight">Height (cm):</label>
+                                    <input type="number" id="userHeight" name="height" placeholder="Enter Height"
+                                        min="120" max="260" required>
+                                </div>
+                                <div class="digestive-input-group">
+                                    <label for="userWeight">Weight (kg):</label>
+                                    <input type="number" id="userWeight" name="weight" placeholder="Enter Weight"
+                                        min="25" max="220" required>
+                                </div>
+                                <div class="digestive-info-description" id="infoDescription">
+                                    <p><b>BMI:</b> Body Mass Index measures body fat based on height and
+                                        weight</p>
+                                    <p><b>Body Fat %:</b> Estimated percentage of body weight that is fat
+                                        tissue</p>
+                                    <p><b>Note:</b> Results are estimates and may vary based on muscle mass
+                                        and body composition</p>
+                                </div>
+                                <button type="button" id="calculateBtn" class="digestive-calculate-btn">Calculate BMI &
+                                    Body Fat</button>
+                            </div>
+
+                            <div class="digestive-results-section" id="resultsSection" style="display: none;">
+                                <div class="digestive-results-grid" id="resultsGrid"></div>
+                            </div>
+                        </form>
+                    </section>
+                </aside>
+
+                <!-- System Overview -->
+                <div class="digestive-info-side">
+                    <figure class="digestive-image-area">
+                        <img src="images/img-digestive-main.jpg"
+                            alt="Complete digestive system anatomy showing mouth, esophagus, liver, stomach, gallbladder, small intestine, large intestine, rectum and anus"
+                            class="digestive-diagram">
+                    </figure>
+                    <div class="digestive-intro-text">
+                        <p>The digestive system is a complex network of organs that work together to break down food,
+                            absorb nutrients, and eliminate waste from your body.</p>
+                        <p>Your digestive tract is about 30 feet long, stretching from your mouth to your anus, and
+                            includes specialized organs like the liver and pancreas that produce essential digestive
+                            enzymes and bile.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Functions Section -->
+            <section class="digestive-section">
+                <h3>Main Functions</h3>
+                <ul class="digestive-function-list">
+                    <li><b>Food Breakdown:</b> Mechanically and chemically breaks down food into smaller,
+                        absorbable nutrients</li>
+                    <li><b>Nutrient Absorption:</b> Absorbs vitamins, minerals, carbohydrates, proteins, and
+                        fats into the bloodstream</li>
+                    <li><b>Waste Elimination:</b> Removes indigestible materials and toxins from the body
+                        through bowel movements</li>
+                    <li><b>Fluid Balance:</b> Regulates water absorption and maintains proper hydration levels
+                    </li>
+                    <li><b>Immune Protection:</b> Acts as a barrier against harmful bacteria and pathogens
+                        entering the body</li>
+                    <li><b>Hormone Production:</b> Produces digestive hormones that regulate appetite,
+                        digestion, and metabolism</li>
+                </ul>
+            </section>
+
+            <!-- Key Organs Section -->
+            <section class="digestive-section">
+                <h3>Major Digestive Organs</h3>
+                <div class="digestive-organs-grid">
+                    <article class="digestive-organ-item">
+                        <h4>Mouth & Teeth</h4>
+                        <p>Begins mechanical digestion by chewing food and chemical digestion through saliva enzymes
+                            that start breaking down starches.</p>
+                    </article>
+                    <article class="digestive-organ-item">
+                        <h4>Stomach</h4>
+                        <p>Produces powerful gastric acid and pepsin enzymes to break down proteins while churning food
+                            into a liquid called chyme.</p>
+                    </article>
+                    <article class="digestive-organ-item">
+                        <h4>Small Intestine</h4>
+                        <p>Primary site of nutrient absorption, where most vitamins, minerals, carbohydrates, proteins,
+                            and fats enter the bloodstream.</p>
+                    </article>
+                    <article class="digestive-organ-item">
+                        <h4>Large Intestine</h4>
+                        <p>Absorbs remaining water and electrolytes from indigestible food matter, forming solid waste
+                            for elimination.</p>
+                    </article>
+                    <article class="digestive-organ-item">
+                        <h4>Liver</h4>
+                        <p>Produces bile to break down fats, processes absorbed nutrients, and detoxifies harmful
+                            substances from the blood.</p>
+                    </article>
+                    <article class="digestive-organ-item">
+                        <h4>Pancreas</h4>
+                        <p>Secretes digestive enzymes for proteins, fats, and carbohydrates, plus insulin to regulate
+                            blood sugar levels.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Digestive Grid Section -->
+            <section class="digestive-section">
+                <h3>How Digestion Works</h3>
+                <div class="digestive-process-grid">
+                    <div class="digestive-process-item">
+                        <div class="digestive-process-image">
+                            <img src="images/img-digestive-step1.jpg"
+                                alt="Food ingestion and chewing process showing teeth breaking down food and saliva enzymes beginning starch digestion"
+                                class="digestive-step-image">
+                        </div>
+                        <div class="digestive-process-text">
+                            <h4>Ingestion & Chewing</h4>
+                            <p>Food enters the mouth where teeth mechanically break it down while saliva begins chemical
+                                digestion of starches.</p>
+                        </div>
+                    </div>
+
+                    <div class="digestive-process-item">
+                        <div class="digestive-process-image">
+                            <img src="images/img-digestive-step2.jpg"
+                                alt="Stomach acid breakdown showing hydrochloric acid and pepsin enzymes breaking down proteins"
+                                class="digestive-step-image">
+                        </div>
+                        <div class="digestive-process-text">
+                            <h4>Stomach Acid Breakdown</h4>
+                            <p>The stomach produces hydrochloric acid and pepsin enzymes that break down proteins and
+                                kill harmful bacteria.</p>
+                        </div>
+                    </div>
+
+                    <div class="digestive-process-item">
+                        <div class="digestive-process-image">
+                            <img src="images/img-digestive-step3.jpg"
+                                alt="Small intestine absorption showing pancreatic enzymes, bile, and nutrient absorption through intestinal walls"
+                                class="digestive-step-image">
+                        </div>
+                        <div class="digestive-process-text">
+                            <h4>Small Intestine Absorption</h4>
+                            <p>Pancreatic enzymes and bile complete digestion while nutrients are absorbed through
+                                intestinal walls into the bloodstream.</p>
+                        </div>
+                    </div>
+
+                    <div class="digestive-process-item">
+                        <div class="digestive-process-image">
+                            <img src="images/img-digestive-step4.jpg"
+                                alt="Large intestine and elimination showing water absorption, waste formation, and elimination process"
+                                class="digestive-step-image">
+                        </div>
+                        <div class="digestive-process-text">
+                            <h4>Large Intestine & Elimination</h4>
+                            <p>Water is absorbed from remaining waste, forming solid stool that is stored in the rectum
+                                and eliminated through the anus.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- CIRCULATORY SYSTEM -->
+        <article class="system-page" id="circulatory-content">
+            <header>
+                <h2>Circulatory System</h2>
+            </header>
+
+            <div class="circulatory-top-layout">
+                <aside class="circulatory-game-side">
+                    <!-- Circulatory Mini-Game Section -->
+                    <section class="circulatory-game-section">
+                        <h3>Circulatory Mini-Game</h3>
+                        <div class="circulatory-game-area">
+                            <div class="heart-game-container">
+                                <div class="heart-animation-area">
+                                    <div class="heart-pulse-circle" id="heartPulseCircle"></div>
+                                    <div class="heart-icon" id="heartIcon">❤️</div>
+                                </div>
+                            </div>
+
+                            <div class="rhythm-feedback" id="rhythmFeedback">
+                                <p>Set your target BPM and click the heart in rhythm!</p>
+                            </div>
+
+                            <div class="game-controls">
+                                <div class="bpm-input-group">
+                                    <label for="targetBPM">Target BPM:</label>
+                                    <input type="number" id="targetBPM" min="40" max="220" value="60" placeholder="60">
+                                    <button type="button" class="set-bpm-btn">Set BPM</button>
+                                </div>
+
+                                <div class="bpm-display-group">
+                                    <div class="bpm-display">
+                                        <span>Target: <span id="displayTargetBPM">--</span> BPM</span>
+                                    </div>
+                                    <div class="bpm-display">
+                                        <span>Your BPM: <span id="displayActualBPM">--</span></span>
+                                    </div>
+                                </div>
+
+                                <button type="button" id="resetGameBtn" class="reset-game-btn">Reset Game</button>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+
+                <!-- System Overview -->
+                <div class="circulatory-info-side">
+                    <figure class="circulatory-image-area">
+                        <img src="images/img-circulatory-main.jpg"
+                            alt="Complete circulatory system anatomy showing heart, arteries, veins, and blood flow throughout the human body"
+                            class="circulatory-diagram">
+                    </figure>
+                    <div class="circulatory-intro-text">
+                        <p>The circulatory system is a complex network of the heart, blood vessels, and blood that
+                            transports oxygen, nutrients, and waste products throughout your entire body.</p>
+                        <p>Your heart beats approximately 100,000 times per day, pumping about 2,000 gallons of blood
+                            through over 60,000 miles of blood vessels to keep every cell in your body alive and
+                            functioning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Functions Section -->
+            <section class="circulatory-section">
+                <h3>Main Functions</h3>
+                <ul class="circulatory-function-list">
+                    <li><b>Oxygen Transport:</b> Carries oxygen from the lungs to all body tissues and returns
+                        carbon dioxide to the lungs for elimination</li>
+                    <li><b>Nutrient Delivery:</b> Transports nutrients absorbed from the digestive system to
+                        cells throughout the body</li>
+                    <li><b>Waste Removal:</b> Collects metabolic waste products and delivers them to organs
+                        like kidneys and liver for elimination</li>
+                    <li><b>Temperature Regulation:</b> Distributes heat throughout the body and helps maintain
+                        optimal body temperature</li>
+                    <li><b>Immune Defense:</b> Transports white blood cells and antibodies to fight infections
+                        and diseases</li>
+                    <li><b>Hormone Distribution:</b> Carries hormones from endocrine glands to target organs
+                        throughout the body</li>
+                </ul>
+            </section>
+
+            <!-- Key Organs Section -->
+            <section class="circulatory-section">
+                <h3>Major Circulatory Components</h3>
+                <div class="circulatory-organs-grid">
+                    <article class="circulatory-organ-item">
+                        <h4>Heart</h4>
+                        <p>Four-chambered muscular pump that contracts rhythmically to push blood through the
+                            circulatory system, with separate circuits for lungs and body.</p>
+                    </article>
+                    <article class="circulatory-organ-item">
+                        <h4>Arteries</h4>
+                        <p>Thick-walled blood vessels that carry oxygen-rich blood away from the heart to tissues
+                            throughout the body under high pressure.</p>
+                    </article>
+                    <article class="circulatory-organ-item">
+                        <h4>Veins</h4>
+                        <p>Thin-walled blood vessels with valves that return oxygen-poor blood back to the heart, often
+                            working against gravity.</p>
+                    </article>
+                    <article class="circulatory-organ-item">
+                        <h4>Capillaries</h4>
+                        <p>Microscopic blood vessels where actual exchange of oxygen, nutrients, and waste occurs
+                            between blood and body tissues.</p>
+                    </article>
+                    <article class="circulatory-organ-item">
+                        <h4>Blood</h4>
+                        <p>Liquid tissue containing red blood cells for oxygen transport, white blood cells for
+                            immunity, platelets for clotting, and plasma for transport.</p>
+                    </article>
+                    <article class="circulatory-organ-item">
+                        <h4>Lungs</h4>
+                        <p>Respiratory organs where blood picks up fresh oxygen and releases carbon dioxide through the
+                            pulmonary circulation circuit.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Circulatory Grid Section -->
+            <section class="circulatory-section">
+                <h3>How Blood Circulation Works</h3>
+                <div class="circulatory-process-grid">
+                    <div class="circulatory-process-item">
+                        <div class="circulatory-process-image">
+                            <img src="images/img-circulatory-step1.jpg"
+                                alt="Heart pumping action showing four chambers working in sequence with right side pumping to lungs and left side to body"
+                                class="circulatory-step-image">
+                        </div>
+                        <div class="circulatory-process-text">
+                            <h4>Heart Pumping Action</h4>
+                            <p>The heart's four chambers work in sequence - right side pumps blood to lungs, left side
+                                pumps oxygenated blood to the body.</p>
+                        </div>
+                    </div>
+
+                    <div class="circulatory-process-item">
+                        <div class="circulatory-process-image">
+                            <img src="images/img-circulatory-step2.jpg"
+                                alt="Pulmonary circulation showing oxygen-poor blood traveling to lungs and picking up oxygen while releasing carbon dioxide"
+                                class="circulatory-step-image">
+                        </div>
+                        <div class="circulatory-process-text">
+                            <h4>Pulmonary Circulation</h4>
+                            <p>Oxygen-poor blood travels from the right heart to the lungs where it picks up oxygen and
+                                releases carbon dioxide.</p>
+                        </div>
+                    </div>
+
+                    <div class="circulatory-process-item">
+                        <div class="circulatory-process-image">
+                            <img src="images/img-circulatory-step3.jpg"
+                                alt="Systemic circulation showing oxygen-rich blood flowing through arteries to capillaries delivering nutrients to cells"
+                                class="circulatory-step-image">
+                        </div>
+                        <div class="circulatory-process-text">
+                            <h4>Systemic Circulation</h4>
+                            <p>Oxygen-rich blood flows from the left heart through arteries to capillaries where
+                                nutrients and oxygen are delivered to cells.</p>
+                        </div>
+                    </div>
+
+                    <div class="circulatory-process-item">
+                        <div class="circulatory-process-image">
+                            <img src="images/img-circulatory-step4.jpg"
+                                alt="Venous return showing oxygen-poor blood returning through veins back to heart completing circulation cycle"
+                                class="circulatory-step-image">
+                        </div>
+                        <div class="circulatory-process-text">
+                            <h4>Venous Return</h4>
+                            <p>Oxygen-poor blood returns through veins back to the heart, completing the circulation
+                                cycle that repeats continuously.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- NERVOUS SYSTEM -->
+        <article class="system-page" id="nervous-content">
+            <header>
+                <h2>Nervous System</h2>
+            </header>
+
+            <!-- System Overview -->
+            <div class="system-intro">
+                <img src="images/img-nervous-main.jpg" alt="Nervous system anatomy diagram" class="system-image">
+                <div class="intro-text">
+                    <p>Your nervous system is your body's control center, made up of your brain, spinal cord, and a vast
+                        network of nerves that reach every part of your body. It processes information from your senses,
+                        controls your movements, and manages both conscious actions and automatic functions like
+                        breathing and heartbeat.</p>
+                    <p>This complex system works like a high-speed communication network, sending electrical signals
+                        throughout your body in milliseconds. It coordinates everything from simple reflexes to complex
+                        thoughts, emotions, and memories.</p>
+                </div>
+            </div>
+
+            <!-- Main Functions Section -->
+            <section class="nervous-section">
+                <h3>Main Functions</h3>
+                <ul class="nervous-function-list">
+                    <li><b>Sensory Processing:</b> Receives and interprets information from your five senses (sight,
+                        hearing, touch, taste, smell) to help you understand your environment</li>
+                    <li><b>Motor Control:</b> Controls voluntary movements like walking, writing, and speaking, as well
+                        as involuntary actions like reflexes</li>
+                    <li><b>Cognitive Functions:</b> Manages thinking, learning, memory formation, problem-solving, and
+                        decision-making processes</li>
+                    <li><b>Emotional Regulation:</b> Controls emotions, mood, and behavioral responses to different
+                        situations and stimuli</li>
+                    <li><b>Homeostasis Maintenance:</b> Automatically regulates body temperature, heart rate, breathing,
+                        digestion, and other vital functions</li>
+                    <li><b>Communication Coordination:</b> Enables language processing, speech production, and social
+                        interaction abilities</li>
+                </ul>
+            </section>
+
+            <!-- Key Organs Section -->
+            <section class="nervous-section">
+                <h3>Key Organs & Parts</h3>
+                <div class="nervous-organs-grid">
+                    <article class="nervous-organ-item">
+                        <h4>Brain</h4>
+                        <p>The control center that processes information, stores memories, and controls all body
+                            functions.</p>
+                    </article>
+                    <article class="nervous-organ-item">
+                        <h4>Spinal Cord</h4>
+                        <p>The main pathway that carries messages between your brain and the rest of your body.</p>
+                    </article>
+                    <article class="nervous-organ-item">
+                        <h4>Peripheral Nerves</h4>
+                        <p>Network of nerves that branch out from the spinal cord to reach every part of your body.</p>
+                    </article>
+                    <article class="nervous-organ-item">
+                        <h4>Neurons</h4>
+                        <p>Specialized cells that transmit electrical and chemical signals throughout the nervous
+                            system.</p>
+                    </article>
+                    <article class="nervous-organ-item">
+                        <h4>Sensory Organs</h4>
+                        <p>Eyes, ears, nose, tongue, and skin that detect stimuli and send information to the brain.</p>
+                    </article>
+                    <article class="nervous-organ-item">
+                        <h4>Reflex Arcs</h4>
+                        <p>Quick response pathways that allow immediate reactions without conscious thought.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Neural Communication Process Section -->
+            <section class="nervous-section">
+                <h3>How Neural Communication Works</h3>
+                <div class="nervous-communication-grid">
+                    <article class="nervous-communication-item">
+                        <figure class="nervous-communication-image">
+                            <img src="images/img-nervous-step1.jpg"
+                                alt="Signal detection showing sensory receptors detecting stimuli and converting to electrical signals"
+                                class="nervous-process-image">
+                        </figure>
+                        <div class="nervous-communication-text">
+                            <h4>1. Signal Detection</h4>
+                            <p>Sensory receptors detect stimuli from your environment and convert them into electrical
+                                signals that neurons can understand.</p>
+                        </div>
+                    </article>
+
+                    <article class="nervous-communication-item">
+                        <figure class="nervous-communication-image">
+                            <img src="images/img-nervous-step2.jpg"
+                                alt="Signal transmission showing neurons carrying electrical signals through nerves to spinal cord and brain"
+                                class="nervous-process-image">
+                        </figure>
+                        <div class="nervous-communication-text">
+                            <h4>2. Signal Transmission</h4>
+                            <p>Neurons carry these electrical signals through your nerves to your spinal cord and up to
+                                your brain for processing.</p>
+                        </div>
+                    </article>
+
+                    <article class="nervous-communication-item">
+                        <figure class="nervous-communication-image">
+                            <img src="images/img-nervous-step3.jpg"
+                                alt="Processing and response showing brain interpreting signals and sending commands to muscles and organs"
+                                class="nervous-process-image">
+                        </figure>
+                        <div class="nervous-communication-text">
+                            <h4>3. Processing & Response</h4>
+                            <p>Your brain interprets the signals, makes decisions, and sends response commands back
+                                through your nervous system to muscles and organs.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </article>
+    </div>
+
+    <!-- Visible upon button hover displaying system and a brief description of the system -->
+    <div class="hover-description" id="hoverDescription">
+        <h3 id="descriptionTitle">NO SYSTEM SELECTED</h3>
+        <p id="descriptionText">The description text will be updated when a button is hovered.</p>
+    </div>
+
+    <!-- Main navigation for each individual body systems -->
+    <nav class="anatomy-nav">
+        <!-- Mobile Dropdown Menu (Only visible when the width is below 800px) -->
+        <button id="mobileMenuBtn" class="mobile-menu-btn">Body Systems Menu</button>
+
+        <!-- Desktop navigation buttons -->
+        <div class="desktop-buttons">
+            <button id="respiratoryBtn" class="nav-btn">Respiratory System</button>
+            <button id="muscularBtn" class="nav-btn">Muscular System</button>
+            <button id="digestiveBtn" class="nav-btn">Digestive System</button>
+            <button id="circulatoryBtn" class="nav-btn">Circulatory System</button>
+            <button id="nervousBtn" class="nav-btn">Nervous System</button>
+        </div>
+
+        <!-- Mobile navigation buttons with dropdown menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button id="mobileRespiratoryBtn" class="mobile-nav-btn">Respiratory System</button>
+            <button id="mobileMuscularBtn" class="mobile-nav-btn">Muscular System</button>
+            <button id="mobileDigestiveBtn" class="mobile-nav-btn">Digestive System</button>
+            <button id="mobileCirculatoryBtn" class="mobile-nav-btn">Circulatory System</button>
+            <button id="mobileNervousBtn" class="mobile-nav-btn">Nervous System</button>
+        </div>
+    </nav>
+
+    <img src="images/QRCode.png" alt="QR Code" class="qr-code">
+    <script src="main.js"></script>
+</body>
+
+</html>
