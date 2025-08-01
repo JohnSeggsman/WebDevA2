@@ -13,11 +13,12 @@ const headerContent = document.querySelector('.header-content');
 const qrCode = document.querySelector('.qr-code');
 
 // Audio Variables | Sound effects for button clicks and other interactions
-const audioSFX1 = new Audio("audio/buttonClick.mp3");
-const audioSFX2 = new Audio("audio/buttonClick_2.mp3");
-const audioSFX3 = new Audio("audio/buttonAmbience.mp3");
-const audioSFX4 = new Audio("audio/successExchange.mp3");
-const audioSFX5 = new Audio("audio/failureExchange.mp3");
+const buttonClick1 = new Audio("audio/buttonClick_1.mp3");
+const buttonClick2 = new Audio("audio/buttonClick_2.mp3");
+const successSFX1 = new Audio("audio/successSFX_1.mp3");
+const failureSFX1 = new Audio("audio/failureSFX_1.mp3");
+const failureSFX2 = new Audio("audio/failureSFX_2.mp3");
+const heartBeatSFX = new Audio("audio/heartBeatSFX.mp3");
 
 // Prevent zooming with more than one finger
 document.addEventListener('touchstart', function (e) {
@@ -235,10 +236,8 @@ function Validator_Hack_Fix_Number1(currentIndex, currentSprite) {
         // Handle button clicks
         handleClick: function () {
             showContent(currentIndex);
-            audioSFX1.currentTime = 0;
-            audioSFX3.currentTime = 0;
-            audioSFX1.play();
-            audioSFX3.play();
+            buttonClick1.currentTime = 0;
+            buttonClick1.play();
         },
 
         // Create touch handlers for mobile layout
@@ -289,8 +288,8 @@ document.addEventListener("click", function (e) {
 // Clicking the header returns back to the default page
 gradientHeader.addEventListener('click', function () {
     if (gradientHeader.classList.contains('minimized')) {
-        audioSFX2.currentTime = 0;
-        audioSFX2.play();
+        buttonClick2.currentTime = 0;
+        buttonClick2.play();
     }
     showDefault();
 });
@@ -449,8 +448,8 @@ function exchangeRespiratoryGas() {
             const molecule = moleculesInZone[i];
             molecule.isO2 = true;
             molecule.el.classList.add('oxygen');
-            audioSFX4.currentTime = 0;
-            audioSFX4.play();
+            successSFX1.currentTime = 0;
+            successSFX1.play();
         }
 
         respiratoryScore += moleculesInZone.length;
@@ -493,8 +492,8 @@ function changeRespiratoryZone() {
 // Game Over Function
 function respiratoryGameOver() {
     respiratoryGameActive = false;
-    audioSFX5.currentTime = 0;
-    audioSFX5.play();
+    failureSFX1.currentTime = 0;
+    failureSFX1.play();
 
     clearInterval(respiratoryGameInterval);
     clearInterval(respiratoryZoneTimer);
@@ -514,17 +513,15 @@ respiratoryBtn.addEventListener('click', exchangeRespiratoryGas);
 let muscularScore = 0, muscularCurrentQtn = 0;
 let muscularAnswered = false, muscularQuizQuestions = [];
 
-const muscularElements = {
-    question: document.getElementById('muscularQuestion'),
-    answers: document.getElementById('muscularAnswers'),
-    nextBtn: document.getElementById('muscularNextBtn'),
-    restartBtn: document.getElementById('muscularRestartBtn'),
-    currentNum: document.getElementById('muscularCurrentQtn'),
-    totalNum: document.getElementById('muscularTotalQtn'),
-    scoreBox: document.getElementById('muscularScoreDisplay'),
-    finalScore: document.getElementById('muscularFinalScore'),
-    questionHeader: document.getElementById('muscularQuestionHeader')
-};
+const muscularQuestion = document.getElementById('muscularQuestion');
+const muscularAnswers = document.getElementById('muscularAnswers');
+const muscularNextBtn = document.getElementById('muscularNextBtn');
+const muscularRestartBtn = document.getElementById('muscularRestartBtn');
+const muscularCurrentNum = document.getElementById('muscularCurrentQtn');
+const muscularTotalNum = document.getElementById('muscularTotalQtn');
+const muscularScoreBox = document.getElementById('muscularScoreDisplay');
+const muscularFinalScore = document.getElementById('muscularFinalScore');
+const muscularQuestionHeader = document.getElementById('muscularQuestionHeader');
 
 // Lists of questions using an array, storing question, possible answers, and the actual answer
 const muscularQuestions = [
@@ -571,10 +568,10 @@ function startMuscular() {
     muscularCurrentQtn = 0;
     muscularScore = 0;
     muscularAnswered = false;
-    muscularElements.totalNum.textContent = '5';
-    muscularElements.scoreBox.style.display = 'none';
-    muscularElements.restartBtn.style.display = 'none';
-    muscularElements.nextBtn.style.display = 'inline-block';
+    muscularTotalNum.textContent = '5';
+    muscularScoreBox.style.display = 'none';
+    muscularRestartBtn.style.display = 'none';
+    muscularNextBtn.style.display = 'inline-block';
     showMuscularQuestion();
 }
 
@@ -583,13 +580,13 @@ function showMuscularQuestion() {
     const currentQuestion = muscularQuizQuestions[muscularCurrentQtn];
     const questionNumber = muscularCurrentQtn + 1;
 
-    // Update the question display thingy (I cannot explain now, its 4am..)
-    muscularElements.questionHeader.textContent = 'Question ' + questionNumber;
-    muscularElements.question.textContent = currentQuestion.question;
-    muscularElements.currentNum.textContent = questionNumber;
-    muscularElements.answers.innerHTML = '';
+    // Update the question display
+    muscularQuestionHeader.textContent = 'Question ' + questionNumber;
+    muscularQuestion.textContent = currentQuestion.question;
+    muscularCurrentNum.textContent = questionNumber;
+    muscularAnswers.innerHTML = '';
     muscularAnswered = false;
-    muscularElements.nextBtn.disabled = true;
+    muscularNextBtn.disabled = true;
 
     // Create radio button options for the quiz
     for (let i = 0; i < currentQuestion.answers.length; i++) {
@@ -615,7 +612,7 @@ function showMuscularQuestion() {
         const handlers = Validator_Hack_Fix_Number2(i, container, radioInput);
         container.onclick = handlers.handleContainerClick;
         radioInput.addEventListener('change', handlers.handleRadioChange);
-        muscularElements.answers.appendChild(container);
+        muscularAnswers.appendChild(container);
     }
 }
 
@@ -631,21 +628,25 @@ function selectMuscularAnswer(answerIndex, clickedContainer) {
     clickedContainer.classList.add('selected');
 
     setTimeout(function () {
-        const allContainers = muscularElements.answers.querySelectorAll('.muscular-radio-option');
+        const allContainers = muscularAnswers.querySelectorAll('.muscular-radio-option');  // ✅ Correct
 
         if (isCorrect) { // If the user answered correctly
             clickedContainer.classList.add('correct');
             muscularScore++;
+            successSFX1.currentTime = 0;
+            successSFX1.play();
         } else { // If the user answered wrongly, show correct answer as well
             clickedContainer.classList.add('incorrect');
             allContainers[correctIndex].classList.add('highlight-correct');
+            failureSFX2.currentTime = 0;
+            failureSFX2.play();
         }
 
         // Disable all the containers and enable button to go to the next question
         for (let i = 0; i < allContainers.length; i++) {
             allContainers[i].style.pointerEvents = 'none';
         }
-        muscularElements.nextBtn.disabled = false;
+        muscularNextBtn.disabled = false;
     }, 300);
 }
 
@@ -660,13 +661,13 @@ function nextMuscularQuestion() {
 
 // Show the final results (the score) for the quiz and some words from a list above
 function finishMuscularQuiz() {
-    muscularElements.questionHeader.textContent = "Quiz Complete!";
-    muscularElements.question.textContent = completionMessages[muscularScore] || "Great job completing the muscular system quiz!";
-    muscularElements.answers.innerHTML = '';
-    muscularElements.nextBtn.style.display = 'none';
-    muscularElements.restartBtn.style.display = 'inline-block';
-    muscularElements.scoreBox.style.display = 'block';
-    muscularElements.finalScore.textContent = muscularScore;
+    muscularQuestionHeader.textContent = "Quiz Complete!";
+    muscularQuestion.textContent = completionMessages[muscularScore] || "Great job completing the muscular system quiz!";
+    muscularAnswers.innerHTML = '';
+    muscularNextBtn.style.display = 'none';
+    muscularRestartBtn.style.display = 'inline-block';
+    muscularScoreBox.style.display = 'block';
+    muscularFinalScore.textContent = muscularScore;
 }
 
 // Same stupid validator issue as above. Here to stop the validator from complaining.
@@ -692,8 +693,8 @@ function Validator_Hack_Fix_Number2(answerIndex, container, radioInput) {
 }
 
 // Event Listeners
-muscularElements.nextBtn.addEventListener('click', nextMuscularQuestion);
-muscularElements.restartBtn.addEventListener('click', startMuscular);
+muscularNextBtn.addEventListener('click', nextMuscularQuestion);
+muscularRestartBtn.addEventListener('click', startMuscular);
 
 // Start the quiz when page loads
 document.addEventListener('DOMContentLoaded', function () {
@@ -706,15 +707,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ---------- */
 // Digestive System Calculator JavaScripts
-const digestiveElements = {
-    genderSelect: document.getElementById('userGender'),
-    ageInput: document.getElementById('userAge'),
-    heightInput: document.getElementById('userHeight'),
-    weightInput: document.getElementById('userWeight'),
-    calculateBtn: document.getElementById('calculateBtn'),
-    resultsSection: document.getElementById('resultsSection'),
-    resultsGrid: document.getElementById('resultsGrid')
-};
+const digestiveGenderSelect = document.getElementById('userGender');
+const digestiveAgeInput = document.getElementById('userAge');
+const digestiveHeightInput = document.getElementById('userHeight');
+const digestiveWeightInput = document.getElementById('userWeight');
+const digestiveCalculateBtn = document.getElementById('calculateBtn');
+const digestiveResultsSection = document.getElementById('resultsSection');
+const digestiveResultsGrid = document.getElementById('resultsGrid');
 
 // Calculate BMI from weight and height
 function calculateBMI(weight, height) {
@@ -755,9 +754,9 @@ function getBodyFatCategory(bodyFat, gender) {
 
 // Validate all input fields and ensure everything has been correctly filled
 function validateInputs() {
-    const age = parseInt(digestiveElements.ageInput.value);
-    const height = parseInt(digestiveElements.heightInput.value);
-    const weight = parseInt(digestiveElements.weightInput.value);
+    const age = parseInt(digestiveAgeInput.value);
+    const height = parseInt(digestiveHeightInput.value);
+    const weight = parseInt(digestiveWeightInput.value);
 
     if (!age || !height || !weight) {
         alert('Please fill in all fields with valid numbers!');
@@ -771,8 +770,8 @@ function validateInputs() {
         alert('Please enter a height between 120 and 260 cm!');
         return false;
     }
-    if (weight < 35 || weight > 220) {
-        alert('Please enter a weight between 25 and 220 kg!');
+    if (weight < 25 || weight > 320) {
+        alert('Please enter a weight between 25 and 320 kg!');
         return false;
     }
     return true;
@@ -791,7 +790,7 @@ function createResult(title, value, category, cssClass, description) {
 
 // Display the calculation results
 function displayResults(bmi, bmiInfo, bodyFat, bodyFatInfo) {
-    digestiveElements.resultsGrid.innerHTML = '';
+    digestiveResultsGrid.innerHTML = '';
 
     // Create and add BMI div
     const bmiDiv = createResult(
@@ -811,9 +810,9 @@ function displayResults(bmi, bmiInfo, bodyFat, bodyFatInfo) {
         'Estimated percentage of body weight that is fat tissue'
     );
 
-    digestiveElements.resultsGrid.appendChild(bmiDiv);
-    digestiveElements.resultsGrid.appendChild(bodyFatDiv);
-    digestiveElements.resultsSection.style.display = 'block';
+    digestiveResultsGrid.appendChild(bmiDiv);
+    digestiveResultsGrid.appendChild(bodyFatDiv);
+    digestiveResultsSection.style.display = 'block';
 }
 
 // Main calculation function
@@ -821,10 +820,10 @@ function calculateHealthMetrics() {
     if (!validateInputs()) return;
 
     // Get the input values
-    const gender = digestiveElements.genderSelect.value;
-    const age = parseInt(digestiveElements.ageInput.value);
-    const height = parseInt(digestiveElements.heightInput.value);
-    const weight = parseInt(digestiveElements.weightInput.value);
+    const gender = digestiveGenderSelect.value;
+    const age = parseInt(digestiveAgeInput.value);
+    const height = parseInt(digestiveHeightInput.value);
+    const weight = parseInt(digestiveWeightInput.value);
 
     // Calculate results
     const bmi = calculateBMI(weight, height);
@@ -841,28 +840,28 @@ function calculateHealthMetrics() {
 document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
         if (document.getElementById('digestive-content')) {
-            if (digestiveElements.calculateBtn) {
-                digestiveElements.calculateBtn.addEventListener('click', calculateHealthMetrics);
+            if (digestiveCalculateBtn) {
+                digestiveCalculateBtn.addEventListener('click', calculateHealthMetrics);
             }
 
-            if (digestiveElements.ageInput) {
-                digestiveElements.ageInput.addEventListener('keypress', function (event) {
+            if (digestiveAgeInput) {
+                digestiveAgeInput.addEventListener('keypress', function (event) {
                     if (event.key === 'Enter') {
                         calculateHealthMetrics();
                     }
                 });
             }
 
-            if (digestiveElements.heightInput) {
-                digestiveElements.heightInput.addEventListener('keypress', function (event) {
+            if (digestiveHeightInput) {
+                digestiveHeightInput.addEventListener('keypress', function (event) {
                     if (event.key === 'Enter') {
                         calculateHealthMetrics();
                     }
                 });
             }
 
-            if (digestiveElements.weightInput) {
-                digestiveElements.weightInput.addEventListener('keypress', function (event) {
+            if (digestiveWeightInput) {
+                digestiveWeightInput.addEventListener('keypress', function (event) {
                     if (event.key === 'Enter') {
                         calculateHealthMetrics();
                     }
@@ -881,16 +880,14 @@ document.addEventListener('DOMContentLoaded', function () {
 let circulatoryTargetBPM = 60, circulatoryClickCount = 0, circulatoryUserClicks = [];
 let circulatoryGameStarted = false, circulatoryPulseInterval = null;
 
-const circulatoryElements = {
-    heartIcon: document.getElementById('heartIcon'),
-    setBPMBtn: document.querySelector('.set-bpm-btn'),
-    resetGameBtn: document.getElementById('resetGameBtn'),
-    targetBPMInput: document.getElementById('targetBPM'),
-    displayTargetBPM: document.getElementById('displayTargetBPM'),
-    displayActualBPM: document.getElementById('displayActualBPM'),
-    rhythmFeedback: document.getElementById('rhythmFeedback'),
-    pulseCircle: document.getElementById('heartPulseCircle')
-};
+const circulatoryHeartIcon = document.getElementById('heartIcon');
+const circulatorySetBPMBtn = document.querySelector('.set-bpm-btn');
+const circulatoryResetGameBtn = document.getElementById('resetGameBtn');
+const circulatoryTargetBPMInput = document.getElementById('targetBPM');
+const circulatoryDisplayTargetBPM = document.getElementById('displayTargetBPM');
+const circulatoryDisplayActualBPM = document.getElementById('displayActualBPM');
+const circulatoryRhythmFeedback = document.getElementById('rhythmFeedback');
+const circulatoryPulseCircle = document.getElementById('heartPulseCircle');
 
 // Start the heart pulse animation
 function startCirculatoryPulse(bpm) {
@@ -900,21 +897,21 @@ function startCirculatoryPulse(bpm) {
 
     // Reset and restart the pulse animation
     circulatoryPulseInterval = setInterval(function () {
-        if (circulatoryElements.pulseCircle) {
-            circulatoryElements.pulseCircle.classList.remove('pulse-animation');
-            void circulatoryElements.pulseCircle.offsetHeight;
-            circulatoryElements.pulseCircle.classList.add('pulse-animation');
+        if (circulatoryPulseCircle) {
+            circulatoryPulseCircle.classList.remove('pulse-animation');
+            void circulatoryPulseCircle.offsetHeight;
+            circulatoryPulseCircle.classList.add('pulse-animation');
         }
     }, 60000 / bpm);
 }
 
 // Set the target BPM for the game
 function setCirculatoryBPM() {
-    const newBPM = parseInt(circulatoryElements.targetBPMInput.value);
+    const newBPM = parseInt(circulatoryTargetBPMInput.value);
 
     if (newBPM < 40 || newBPM > 220) {
         alert("Please enter a BPM between 40 and 220");
-        circulatoryElements.targetBPMInput.value = circulatoryTargetBPM;
+        circulatoryTargetBPMInput.value = circulatoryTargetBPM;
         return;
     }
 
@@ -923,29 +920,29 @@ function setCirculatoryBPM() {
     circulatoryUserClicks = [];
     circulatoryClickCount = 0;
 
-    circulatoryElements.displayTargetBPM.textContent = newBPM;
-    circulatoryElements.displayActualBPM.textContent = '--';
+    circulatoryDisplayTargetBPM.textContent = newBPM;
+    circulatoryDisplayActualBPM.textContent = '--';
 
     startCirculatoryPulse(newBPM);
     updateCirculatoryFeedback("Click the heart in rhythm with the pulse!");
 }
 
-// Function to handle user input (when the user clicks on the heart emoji)
-// I wish I can use PNG, but 3mb limit is a real pain and jpg doesnt have transparency
+// Function to handle user input (when the user clicks on the heart)
+// UPDATE 1ST AUG 9:25PM: WE HAVE ENOUGH SPACE FOR A PNG!! LETS GOOOOOO!
 function handleCirculatoryClick() {
     if (!circulatoryGameStarted) {
         updateCirculatoryFeedback("Please set a target BPM first to start the game!");
         return;
     }
 
-    // This is needed because we can do (Prev Epoch - Curr Epoch) to get time difference
+    // This is needed because we can do "Prev Epoch - Curr Epoch" to get time difference
     circulatoryUserClicks.push(Date.now());
     circulatoryClickCount++;
 
     // Visual feedback on click
-    circulatoryElements.heartIcon.style.transform = 'scale(1.15)';
+    circulatoryHeartIcon.style.transform = 'scale(0.225)'; // Lower from 1.1
     setTimeout(function () {
-        circulatoryElements.heartIcon.style.transform = 'scale(1)';
+        circulatoryHeartIcon.style.transform = 'scale(0.2)'; // Lower from 1.0
     }, 100);
 
     if (circulatoryClickCount >= 10) {
@@ -954,6 +951,9 @@ function handleCirculatoryClick() {
         const remaining = 10 - circulatoryClickCount;
         updateCirculatoryFeedback('Calculating rhythm... Please click ' + remaining + ' more time' + (remaining === 1 ? '' : 's') + '!');
     }
+
+    heartBeatSFX.currentTime = 0;
+    heartBeatSFX.play();
 }
 
 // Calculate the user's BPM from their clicks
@@ -972,11 +972,11 @@ function calculateCirculatoryBPM() {
 
     // Display calculated BPM
     if (userBPM >= 20 && userBPM <= 300) {
-        circulatoryElements.displayActualBPM.textContent = userBPM;
+        circulatoryDisplayActualBPM.textContent = userBPM;
         giveCirculatoryFeedback(userBPM);
     } else {
         // Prevent the user from spam clicking or clicking too slow (for whatever reason)
-        circulatoryElements.displayActualBPM.textContent = 'Error';
+        circulatoryDisplayActualBPM.textContent = 'Error';
         updateCirculatoryFeedback("Rhythm cannot be recorded, please try again!");
     }
 
@@ -1014,8 +1014,8 @@ function giveCirculatoryFeedback(userBPM) {
 
 // Update the feedback message (inside the green box in between the heart and the text box)
 function updateCirculatoryFeedback(message) {
-    if (circulatoryElements.rhythmFeedback) {
-        circulatoryElements.rhythmFeedback.innerHTML = '<p>' + message + '</p>';
+    if (circulatoryRhythmFeedback) {
+        circulatoryRhythmFeedback.innerHTML = '<p>' + message + '</p>';
     }
 }
 
@@ -1031,13 +1031,12 @@ function resetCirculatoryGame() {
     circulatoryGameStarted = false;
     circulatoryClickCount = 0;
 
-    // Reset the text back to its default state
-    circulatoryElements.targetBPMInput.value = 60;
-    circulatoryElements.displayTargetBPM.textContent = '--';
-    circulatoryElements.displayActualBPM.textContent = '--';
-
-    circulatoryElements.pulseCircle.classList.remove('pulse-animation');
-    circulatoryElements.heartIcon.style.transform = 'scale(1)';
+    // Reset the text back and everything else to its default state
+    circulatoryTargetBPMInput.value = 60;
+    circulatoryDisplayTargetBPM.textContent = '--';
+    circulatoryDisplayActualBPM.textContent = '--';
+    circulatoryPulseCircle.classList.remove('pulse-animation');
+    circulatoryHeartIcon.style.transform = 'scale(0.2)'; // Same as above. Reduce scale to fit.
 
     updateCirculatoryFeedback("Set your target BPM and click the heart in rhythm!");
     startCirculatoryPulse(circulatoryTargetBPM);
@@ -1047,20 +1046,20 @@ function resetCirculatoryGame() {
 document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
         if (document.getElementById('circulatory-content')) {
-            if (circulatoryElements.setBPMBtn) {
-                circulatoryElements.setBPMBtn.addEventListener('click', setCirculatoryBPM);
+            if (circulatorySetBPMBtn) {
+                circulatorySetBPMBtn.addEventListener('click', setCirculatoryBPM);
             }
 
-            if (circulatoryElements.resetGameBtn) {
-                circulatoryElements.resetGameBtn.addEventListener('click', resetCirculatoryGame);
+            if (circulatoryResetGameBtn) {
+                circulatoryResetGameBtn.addEventListener('click', resetCirculatoryGame);
             }
 
-            if (circulatoryElements.heartIcon) {
-                circulatoryElements.heartIcon.addEventListener('click', handleCirculatoryClick);
+            if (circulatoryHeartIcon) {
+                circulatoryHeartIcon.addEventListener('click', handleCirculatoryClick);
             }
 
-            if (circulatoryElements.targetBPMInput) {
-                circulatoryElements.targetBPMInput.addEventListener('keypress', function (event) {
+            if (circulatoryTargetBPMInput) {
+                circulatoryTargetBPMInput.addEventListener('keypress', function (event) {
                     if (event.key === 'Enter') {
                         setCirculatoryBPM();
                     }

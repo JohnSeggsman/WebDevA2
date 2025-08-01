@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Functions of the Human Body">
+    <meta name="application-name" content="Functions of the Human Body">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#2d89ef">
     <title>Functions of the Human Body</title>
     <link rel="icon" type="image/x-icon" href="images/page_icon.ico">
     <link rel="stylesheet" href="style.css">
@@ -199,7 +204,7 @@
                 <div class="intro-text">
                     <p>The muscular system is composed of over 600 muscles that work together to create movement,
                         maintain posture, and generate heat for the body.</p>
-                    <p>Your muscles contain different types of fibers - slow-twitch fibers that are great for
+                    <p>Your muscles contain different types of fibers: slow-twitch fibers that are great for
                         endurance activities like marathon running, and fast-twitch fibers that provide explosive
                         power for activities like sprinting and weightlifting.</p>
                     <p>Beyond movement, muscles work with bones to enable every action, making every step, jump, and
@@ -381,7 +386,7 @@
                                 <div class="digestive-input-group">
                                     <label for="userWeight">Weight (kg):</label>
                                     <input type="number" id="userWeight" name="weight" placeholder="Enter Weight"
-                                        min="25" max="220" required>
+                                        min="25" max="320" required>
                                 </div>
                                 <div class="digestive-info-description" id="infoDescription">
                                     <p><b>BMI:</b> Body Mass Index measures body fat based on height and
@@ -412,7 +417,7 @@
                     <div class="digestive-intro-text">
                         <p>The digestive system is a complex network of organs that work together to break down food,
                             absorb nutrients, and eliminate waste from your body.</p>
-                        <p>Your digestive tract is about 30 feet long, stretching from your mouth to your anus, and
+                        <p>Your digestive tract is about 8-10 meters long, stretching from your mouth to your anus, and
                             includes specialized organs like the liver and pancreas that produce essential digestive
                             enzymes and bile.</p>
                     </div>
@@ -549,12 +554,13 @@
                             <div class="heart-game-container">
                                 <div class="heart-animation-area">
                                     <div class="heart-pulse-circle" id="heartPulseCircle"></div>
-                                    <div class="heart-icon" id="heartIcon">❤️</div>
+                                    <img src="images/img-circulatory-heart.png" alt="A non-realistic image of a heart"
+                                        class="heart-icon" id="heartIcon">
                                 </div>
                             </div>
 
                             <div class="rhythm-feedback" id="rhythmFeedback">
-                                <p>Set your target BPM and click the heart in rhythm!</p>
+                                <p>Set your target BPM and click / tap the heart in rhythm!</p>
                             </div>
 
                             <div class="game-controls">
@@ -569,7 +575,7 @@
                                         <span>Target: <span id="displayTargetBPM">--</span> BPM</span>
                                     </div>
                                     <div class="bpm-display">
-                                        <span>Your BPM: <span id="displayActualBPM">--</span></span>
+                                        <span>Current: <span id="displayActualBPM">--</span> BPM</span>
                                     </div>
                                 </div>
 
@@ -589,8 +595,8 @@
                     <div class="circulatory-intro-text">
                         <p>The circulatory system is a complex network of the heart, blood vessels, and blood that
                             transports oxygen, nutrients, and waste products throughout your entire body.</p>
-                        <p>Your heart beats approximately 100,000 times per day, pumping about 2,000 gallons of blood
-                            through over 60,000 miles of blood vessels to keep every cell in your body alive and
+                        <p>Your heart beats approximately 100,000 times per day, pumping roughly 7,200 litres of blood
+                            through over 19,000 km of blood vessels to keep every cell in your body alive and
                             functioning.</p>
                     </div>
                 </div>
@@ -664,7 +670,7 @@
                         </div>
                         <div class="circulatory-process-text">
                             <h4>Heart Pumping Action</h4>
-                            <p>The heart's four chambers work in sequence - right side pumps blood to lungs, left side
+                            <p>The heart's four chambers work in sequence: right side pumps blood to lungs, left side
                                 pumps oxygenated blood to the body.</p>
                         </div>
                     </div>

@@ -1618,12 +1618,13 @@ body {
     position: relative;
     cursor: pointer;
     user-select: none;
+    transform: scale(0.2);
     transition: transform 0.1s ease;
     z-index: 2;
 }
 
 .heart-icon:hover {
-    transform: scale(1.1);
+    transform: scale(0.21);
 }
 
 .rhythm-feedback {
