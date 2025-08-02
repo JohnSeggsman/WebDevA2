@@ -813,7 +813,7 @@ body {
 .muscular-game-section {
     background: rgb(255, 255, 255);
     padding: 30px 20px;
-    text-align: center;
+    text-align: left;
     border: 2px dashed rgb(0, 125, 255);
     border-radius: 15px;
 }

@@ -522,6 +522,18 @@ const muscularTotalNum = document.getElementById('muscularTotalQtn');
 const muscularScoreBox = document.getElementById('muscularScoreDisplay');
 const muscularFinalScore = document.getElementById('muscularFinalScore');
 const muscularQuestionHeader = document.getElementById('muscularQuestionHeader');
+const answerLabel0 = document.getElementById('answerLabel-0');
+const answerLabel1 = document.getElementById('answerLabel-1');
+const answerLabel2 = document.getElementById('answerLabel-2');
+const answerLabel3 = document.getElementById('answerLabel-3');
+const radioButton0 = document.getElementById('muscularAnswer-0');
+const radioButton1 = document.getElementById('muscularAnswer-1');
+const radioButton2 = document.getElementById('muscularAnswer-2');
+const radioButton3 = document.getElementById('muscularAnswer-3');
+const container0 = radioButton0.parentElement;
+const container1 = radioButton1.parentElement;
+const container2 = radioButton2.parentElement;
+const container3 = radioButton3.parentElement;
 
 // Lists of questions using an array, storing question, possible answers, and the actual answer
 const muscularQuestions = [
@@ -549,12 +561,12 @@ const muscularQuestions = [
 
 // Lists of completion text using an array, all giving words of encouragement or acknowleding accomplishments
 const completionMessages = [
-    "Don't worry, Learning takes time! Review the content above and try again!",
-    "Good start! You're beginning to understand. Keep studying and you'll improve quickly!",
-    "Nice progress! You're getting the hang of it. A bit more practice and you'll master it!",
-    "Well done! You have a solid understanding! Just a few more details to learn!",
-    "Excellent work! You really know your stuff! Almost perfect, keep it up!",
-    "Outstanding! Perfect score! You've mastered the subject like a true expert!"
+    "Don't worry, Learning takes time!",
+    "Good start, You're beginning to understand!",
+    "Nice progress, You're getting the hang of it!",
+    "Well done, You have a solid understanding!",
+    "Excellent work! You really know your stuff, almost perfect!",
+    "Outstanding! Perfect score! You've mastered the subject!"
 ];
 
 // Start Muscular Mini-Game
@@ -580,56 +592,44 @@ function showMuscularQuestion() {
     const currentQuestion = muscularQuizQuestions[muscularCurrentQtn];
     const questionNumber = muscularCurrentQtn + 1;
 
-    // Update the question display
+    // Update the question display and texts
     muscularQuestionHeader.textContent = 'Question ' + questionNumber;
     muscularQuestion.textContent = currentQuestion.question;
     muscularCurrentNum.textContent = questionNumber;
-    muscularAnswers.innerHTML = '';
     muscularAnswered = false;
     muscularNextBtn.disabled = true;
 
-    // Create radio button options for the quiz
-    for (let i = 0; i < currentQuestion.answers.length; i++) {
-        // Create radio input element
-        const radioInput = document.createElement('input');
-        radioInput.type = 'radio';
-        radioInput.name = 'muscularAnswer';
-        radioInput.value = i;
-        radioInput.id = 'muscularAnswer-' + i;
+    // Update the answer labels with new answer option texts
+    answerLabel0.textContent = currentQuestion.answers[0];
+    answerLabel1.textContent = currentQuestion.answers[1];
+    answerLabel2.textContent = currentQuestion.answers[2];
+    answerLabel3.textContent = currentQuestion.answers[3];
 
-        // Create label for the radio button
-        const label = document.createElement('label');
-        label.htmlFor = 'muscularAnswer-' + i;
-        label.textContent = currentQuestion.answers[i];
+    // Clear all radio button selections
+    radioButton0.checked = false;
+    radioButton1.checked = false;
+    radioButton2.checked = false;
+    radioButton3.checked = false;
 
-        // Create container div to hold everything
-        const container = document.createElement('div');
-        container.className = 'muscular-radio-option';
-        container.appendChild(radioInput);
-        container.appendChild(label);
-
-        // Create event handlers & whatever else to add below
-        const handlers = Validator_Hack_Fix_Number2(i, container, radioInput);
-        container.onclick = handlers.handleContainerClick;
-        radioInput.addEventListener('change', handlers.handleRadioChange);
-        muscularAnswers.appendChild(container);
+    // Remove previous styling from all containers then re-enable clicking
+    const allContainers = muscularAnswers.querySelectorAll('.muscular-radio-option');
+    for (let i = 0; i < allContainers.length; i++) {
+        allContainers[i].classList.remove('correct', 'incorrect', 'highlight-correct');
+        allContainers[i].style.pointerEvents = 'auto';
     }
 }
 
 // Function to handle user input, determine if answer is correct or wrong
-function selectMuscularAnswer(answerIndex, clickedContainer) {
+function handleAnswerClick(answerIndex) {
     if (muscularAnswered) return;
 
     muscularAnswered = true;
     const correctIndex = muscularQuizQuestions[muscularCurrentQtn].correct;
     const isCorrect = answerIndex === correctIndex;
-
-    // Mark the clicked answer to compare
-    clickedContainer.classList.add('selected');
+    const allContainers = muscularAnswers.querySelectorAll('.muscular-radio-option');
+    const clickedContainer = allContainers[answerIndex];
 
     setTimeout(function () {
-        const allContainers = muscularAnswers.querySelectorAll('.muscular-radio-option');  // ✅ Correct
-
         if (isCorrect) { // If the user answered correctly
             clickedContainer.classList.add('correct');
             muscularScore++;
@@ -652,7 +652,8 @@ function selectMuscularAnswer(answerIndex, clickedContainer) {
 
 // Check if we need to go to next the question or finish the quiz
 function nextMuscularQuestion() {
-    if (++muscularCurrentQtn >= muscularQuizQuestions.length) {
+    muscularCurrentQtn++;
+    if (muscularCurrentQtn >= muscularQuizQuestions.length) {
         finishMuscularQuiz();
     } else {
         showMuscularQuestion();
@@ -662,41 +663,101 @@ function nextMuscularQuestion() {
 // Show the final results (the score) for the quiz and some words from a list above
 function finishMuscularQuiz() {
     muscularQuestionHeader.textContent = "Quiz Complete!";
-    muscularQuestion.textContent = completionMessages[muscularScore] || "Great job completing the muscular system quiz!";
-    muscularAnswers.innerHTML = '';
+    muscularQuestion.textContent = completionMessages[muscularScore];
+
+    // Hide all answer options
+    const allContainers = muscularAnswers.querySelectorAll('.muscular-radio-option');
+    for (let i = 0; i < allContainers.length; i++) {
+        allContainers[i].style.display = 'none';
+    }
+
     muscularNextBtn.style.display = 'none';
     muscularRestartBtn.style.display = 'inline-block';
     muscularScoreBox.style.display = 'block';
     muscularFinalScore.textContent = muscularScore;
 }
 
-// Same stupid validator issue as above. Here to stop the validator from complaining.
-// I didn't need this. The code worked perfectly fine, it's only here because the validator
-// wouldn't shut up and complain about some "closure in loop" or whatever nonsense.
-function Validator_Hack_Fix_Number2(answerIndex, container, radioInput) {
-    return {
-        // Allow the user to click on anywhere, including the radio button
-        handleContainerClick: function () {
-            if (!muscularAnswered) {
-                radioInput.checked = true;
-                selectMuscularAnswer(answerIndex, container);
-            }
-        },
+// Handles quiz answer submissions through forms
+function handleAnswerSubmission(event) {
+    event.preventDefault();
 
-        // Radio button interaction
-        handleRadioChange: function () {
-            if (!muscularAnswered && radioInput.checked) {
-                selectMuscularAnswer(answerIndex, container);
-            }
-        }
-    };
+    // Get the form data then get the value of the selected radio button
+    const formData = new FormData(event.target);
+    const selectedAnswer = formData.get('muscularAnswer');
+
+    // Check if the user has selected an answer
+    if (selectedAnswer !== null && !muscularAnswered) {
+        // Convert the answer to a number then process it
+        const answerIndex = parseInt(selectedAnswer);
+        handleAnswerClick(answerIndex);
+    }
 }
 
 // Event Listeners
 muscularNextBtn.addEventListener('click', nextMuscularQuestion);
-muscularRestartBtn.addEventListener('click', startMuscular);
+muscularRestartBtn.addEventListener('click', function () {
+    const allContainers = muscularAnswers.querySelectorAll('.muscular-radio-option');
+    for (let i = 0; i < allContainers.length; i++) {
+        allContainers[i].style.display = 'block';
+    }
+    startMuscular();
+});
 
-// Start the quiz when page loads
+document.getElementById('muscularAnswerForm').addEventListener('submit', handleAnswerSubmission);
+
+radioButton0.addEventListener('change', function () {
+    if (radioButton0.checked && !muscularAnswered) {
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+radioButton1.addEventListener('change', function () {
+    if (radioButton1.checked && !muscularAnswered) {
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+radioButton2.addEventListener('change', function () {
+    if (radioButton2.checked && !muscularAnswered) {
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+radioButton3.addEventListener('change', function () {
+    if (radioButton3.checked && !muscularAnswered) {
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+container0.addEventListener('click', function () {
+    if (!muscularAnswered) {
+        radioButton0.checked = true;
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+container1.addEventListener('click', function () {
+    if (!muscularAnswered) {
+        radioButton1.checked = true;
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+container2.addEventListener('click', function () {
+    if (!muscularAnswered) {
+        radioButton2.checked = true;
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+container3.addEventListener('click', function () {
+    if (!muscularAnswered) {
+        radioButton3.checked = true;
+        document.getElementById('muscularAnswerForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+// Initialize the quiz when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
         if (document.getElementById('muscular-content')) {
@@ -868,10 +929,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
-        // (JUL 31, 2:25 AM)
-        // Wow extra lines of code and all for what? Nothing. It worked fine like THE PREVIOUS
-        // TWO. But noooooo, you have to complain. And you gave me extra work just for you to
-        // shut up. I never want to touch web development in my life ever again.
     }, 100);
 });
 
