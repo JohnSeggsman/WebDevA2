@@ -352,7 +352,7 @@ body {
 }
 
 .system-content-container.expanded {
-    top: calc(10vh + 10px);
+    top: calc(10vh - 15px);
     height: calc(100vh - 10vh - 90px);
 }
 
@@ -1956,7 +1956,7 @@ body {
     }
 
     .system-content-container.expanded {
-        top: calc(7.5vh + 15px);
+        top: calc(7.5vh - 10px);
         height: calc(100vh - 7.5vh - 75px);
     }
 
