@@ -154,7 +154,7 @@ body {
 /* Navigation container placed at bottom of screen */
 .anatomy-nav {
     position: fixed;
-    bottom: 0;
+    bottom: 25px;
     left: 0;
     width: 100%;
     z-index: 1000;
@@ -251,10 +251,27 @@ body {
     background-color: rgb(255, 20, 145);
 }
 
+.page-footer {
+    color: white;
+    background-color: rgb(35, 85, 185);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    z-index: 999;
+}
+
+.page-footer p {
+    font-size: 14px;
+    margin: 0;
+}
+
 /* Body sprite with different system that scrolls through on the main page */
 .body-sprite {
-    --sprite-width: min(300px, calc((100vh - 20vh - 130px) * 0.5));
-    --sprite-height: min(700px, calc(100vh - 20vh - 150px));
+    --sprite-width: min(280px, calc((100vh - 20vh - 125px) * 0.5));
+    --sprite-height: min(700px, calc(100vh - 20vh - 175px));
 
     background: url('images/BodySprites-NonTransparent.jpg') no-repeat;
     background-size: calc(var(--sprite-width) * 7) var(--sprite-height);
@@ -391,7 +408,7 @@ body {
 .hover-description {
     background: linear-gradient(to top, rgba(0, 255, 255, 0.9) 0%, rgba(0, 255, 255, 0) 100%);
     position: fixed;
-    bottom: 80px;
+    bottom: 105px;
     left: 0;
     width: 100%;
     height: 100px;
@@ -431,7 +448,7 @@ body {
 /* The QR code that appears on the desktop layout, helps with mobile viewing */
 .qr-code {
     position: fixed;
-    bottom: 90px;
+    bottom: 115px;
     left: 10px;
     width: 200px;
     height: auto;
@@ -1913,7 +1930,7 @@ body {
     .content-area {
         background-color: transparent;
         position: absolute;
-        top: calc(15vh + 30px);
+        top: calc(15vh + 15px);
         left: 50%;
         width: 100%;
         max-width: 1200px;
@@ -2007,7 +2024,7 @@ body {
     }
 
     .hover-description {
-        bottom: 325px;
+        bottom: 345px;
         height: 120px;
         padding: 0 16px 16px 16px;
     }
